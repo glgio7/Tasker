@@ -9,16 +9,13 @@ export const GlobalCSS = createGlobalStyle`
     scroll-behavior: smooth;
     text-decoration: none;
     list-style: none;
-    font-family: 'Saira Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
 }
 
 body{
-    background-color: #151515;
+    background-color: #050505;
     width: 100%;
 }
-::selection{
-    color: firebrick;
-}
 
-`
+`;

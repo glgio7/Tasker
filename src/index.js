@@ -5,13 +5,13 @@ import { GlobalCSS } from "./cssreset";
 import Home from "./pages/Home";
 import Note from "./pages/Note";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <GlobalCSS />
-    <Routes>
-      <Route exact path="/" element={<Home/>} />
-      <Route exact path="/notepad" element={<Note/>} />
-    </Routes>
-  </BrowserRouter>
+	<BrowserRouter>
+		<GlobalCSS />
+		<Routes>
+			<Route exact path="/" element={<Home />} />
+			<Route exact path="/notepad" element={<Note />} />
+		</Routes>
+	</BrowserRouter>
 );

@@ -1,78 +1,47 @@
-import { Container } from "./styles";
-import { MoveButton } from "../../components/MoveButton";
-import { TiArrowLeftThick, TiArrowRightThick } from "react-icons/ti"
-import { useRef } from "react";
-import { Link } from "react-router-dom";
-import Header from "../../components/Header";
-
+import MasterContainer from "../../components/MasterContainer";
+import { GuideSection, TextSection } from "./styles";
 
 export default function Home() {
-  const container = useRef();
-  let x = 0;
-
-  const nextPage = () => {
-    x += window.innerWidth;
-    container.current.style.transform = `translateX(${-x}px)`
-  }
-  const previousPage = () => {
-    x -= window.innerWidth;
-    container.current.style.transform = `translateX(${-x}px)`
-  }
-  const skip = () => {
-    x = window.innerWidth * 3
-    container.current.style.transform = `translateX(${-x}px)`
-  }
-  return (
-    <>
-    <Header />
-      <Container ref={container}>
-        <div className="box"><div className="text-container">
-          <h2>Getting started to the best To Do app.</h2></div>
-          <div className="arrows">
-            <MoveButton onClick={nextPage}>
-              <TiArrowRightThick className="next" />
-            </MoveButton></div>
-          <h4 className="skip" onClick={skip}>Skip</h4>
-        </div>
-        <div className="box"><div className="text-container">
-          <h2>Is it an Indoor or Outdoor task?</h2>
-            <h3>Check weather forecast quickly!</h3></div>
-          <div className="arrows">
-            <MoveButton onClick={previousPage}>
-              <TiArrowLeftThick className="back" />
-            </MoveButton>
-            <MoveButton onClick={nextPage}>
-              <TiArrowRightThick className="next" />
-            </MoveButton>
-          </div>
-        </div>
-        <div className="box">
-          <div className="text-container">
-            <h2>What is the deadline?</h2>
-            <h3>Get everything in control!</h3></div>
-          <div className="arrows">
-            <MoveButton onClick={previousPage}>
-              <TiArrowLeftThick className="back" />
-            </MoveButton>
-            <MoveButton onClick={nextPage}>
-              <TiArrowRightThick className="next" />
-            </MoveButton>
-          </div>
-        </div>
-        <div className="box">
-
-          <div className="text-container">
-            <h2>All these <strong style={{ color: 'firebrick' }}>features</strong> and more <strong style={{ color: 'firebrick' }}>coming</strong> in 2023...</h2></div>
-          <div className="start-box">
-            <Link to="/notepad" className="link">
-              <button className="start">Start</button></Link></div>
-              <div className="arrows">
-            <MoveButton onClick={previousPage}>
-              <TiArrowLeftThick className="back" />
-            </MoveButton>
-          </div>
-        </div>
-      </Container>
-    </>
-  );
+	return (
+		<>
+			<MasterContainer>
+				<TextSection>
+					<p>
+						Manter suas ideias, tarefas e informações importantes organizadas e
+						com tanta segurança nunca foi tão fácil!
+					</p>
+					<p>
+						Interface simples e intuitiva, crie e edite anotações rapidamente,
+						sem distrações.
+					</p>
+					<p>
+						Integração direta com o Climaki, confira a previsão do tempo antes
+						de marcar seus compromissos sem sair da plataforma.
+					</p>
+					<p>
+						Suas anotações salvas apenas no seu navegador do celular! Totalmente
+						seguro e confiável!
+					</p>
+				</TextSection>
+				<GuideSection>
+					<h2>
+						Anote, organize e domine suas idéias: descubra como tornar isso
+						simples com nosso app.
+					</h2>
+					<div className="item">
+						<span></span>
+						<p>Organize suas notas com etiquetas personalizadas.</p>
+					</div>
+					<div className="item">
+						<span></span>
+						<p>Separe por categorias e tenha tudo sob seu controle.</p>
+					</div>
+					<div className="item">
+						<span></span>
+						<p>Defina os prazos e mantenha-se em ordem!</p>
+					</div>
+				</GuideSection>
+			</MasterContainer>
+		</>
+	);
 }
