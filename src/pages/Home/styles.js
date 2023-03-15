@@ -23,6 +23,11 @@ export const TextSection = styled.div`
 
 		p {
 			width: 100%;
+			font-size: 1.5rem;
+
+			&:first-child {
+				font-size: 1.75rem;
+			}
 		}
 	}
 `;

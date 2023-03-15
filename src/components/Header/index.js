@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { StyledHeader } from "./styles";
 
 export default function Header() {
+	const userLocation = window.location.toString();
+
 	return (
 		<StyledHeader>
 			<Link to={"/"}>
@@ -11,7 +13,7 @@ export default function Header() {
 				</h1>
 			</Link>
 			<Link to={"/notepad"} className="button-iniciar">
-				Iniciar
+				{userLocation.includes("/notepad") ? "Notepad" : "Iniciar"}
 			</Link>
 		</StyledHeader>
 	);

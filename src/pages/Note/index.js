@@ -1,11 +1,8 @@
-// import { useState } from "react";
-import { Item } from "../../components/TaskItem";
-import { remainingDays, Toolbar } from "../../components/Toolbar";
-import { CreateTask, Notepad } from "./styles";
-import { MdOutlineDelete, MdOutlineDone } from "react-icons/md";
-import { VscTriangleUp } from "react-icons/vsc";
-import { useState, useEffect } from "react";
 import MasterContainer from "../../components/MasterContainer";
+import { useState, useEffect } from "react";
+import { Notepad, Item, CreateTask } from "./styles";
+import { remainingDays, Toolbar } from "../../components/Toolbar";
+import { MdOutlineDelete, MdOutlineDone } from "react-icons/md";
 
 export default function Note() {
 	const [task, setTask] = useState("");
@@ -18,6 +15,7 @@ export default function Note() {
 			setList(savedList);
 		}
 	}, []);
+
 	const saveList = (value) =>
 		localStorage.setItem("savedTasks", JSON.stringify(value));
 
@@ -62,65 +60,63 @@ export default function Note() {
 	const toggleWeather = () => setWeather(!weather);
 	const submitOnEnter = (props) => (props.keyCode === 13 ? addTask() : "");
 
-	const [tip, setTip] = useState(false);
-	const toggleTip = () => setTip(!tip);
 	return (
 		<>
 			<MasterContainer onload={() => window.scrollTo(0, 0)}>
 				<Toolbar toggleWeather={toggleWeather} clearList={clearList} />
+
 				<Notepad>
-					<h2>
-						<span>Notepad</span>
-						<p>
-							<span style={{ color: "firebrick", fontWeight: "bold" }}>
-								{remainingDays}
-							</span>{" "}
-							{remainingDays === 1 ? "day" : "days"} left for next month.
-						</p>
-					</h2>
-					{/* Tenho encontrado erros de cookies de terceiros no iFrame, isso será resolvido em breve */}
+					<h2>Notepad</h2>
+					<h4>
+						<span style={{ color: "firebrick", fontWeight: "bold" }}>
+							{remainingDays}
+						</span>{" "}
+						{remainingDays === 1 ? "day" : "days"} left for next month.
+					</h4>
 					<iframe
 						src="https://climaki.vercel.app"
 						className={weather ? "active" : ""}
 						title="weather"
 						crossOrigin="anonymous"
 					></iframe>
+					<button
+						className={weather ? "close-weather active" : "close-weather"}
+						onClick={toggleWeather}
+					>
+						{" "}
+						Voltar para Notepad
+					</button>
+					<CreateTask>
+						<input
+							type="text"
+							value={task}
+							onChange={(e) => setTask(e.target.value)}
+							onKeyDown={(e) => submitOnEnter(e)}
+						/>
+						<select
+							value={deadline}
+							onChange={(e) => setDeadline(e.target.value)}
+						>
+							<option value="">Set deadline (in days)</option>
+							<option>1d</option>
+							<option>2d</option>
+							<option>3d</option>
+							<option>4d</option>
+							<option>5d</option>
+						</select>
+						<button onClick={addTask}>Add</button>
+					</CreateTask>
 					<ul>
-						<CreateTask>
-							<input
-								type="text"
-								value={task}
-								onChange={(e) => setTask(e.target.value)}
-								onKeyDown={(e) => submitOnEnter(e)}
-							/>
-							<select
-								value={deadline}
-								onChange={(e) => setDeadline(e.target.value)}
-							>
-								<option value="">Set deadline (in days)</option>
-								<option>1d</option>
-								<option>2d</option>
-								<option>3d</option>
-								<option>4d</option>
-								<option>5d</option>
-							</select>
-							<button onClick={addTask}>Add</button>
-						</CreateTask>
 						{list.map((task) => (
 							<Item key={task.id} checked={task.checked}>
 								<p>{task.task}</p>
-								<div className="edit">
-									<p>
-										{task.checked
-											? "Done"
-											: `Deadline: ${task.deadline ? task.deadline : "Nope"}`}
-									</p>
-								</div>
-								<div className="edit">
-									<button
-										className="done"
-										onClick={() => toggleDone(task.id, task.checked)}
-									>
+								<span>
+									{task.checked
+										? "Done"
+										: `Deadline: ${task.deadline ? task.deadline : "Nope"}`}
+								</span>
+								<div className="edit-box">
+									<button onClick={() => toggleDone(task.id, task.checked)}>
 										<MdOutlineDone />
 									</button>
 									<button>
@@ -130,14 +126,6 @@ export default function Note() {
 							</Item>
 						))}
 					</ul>
-					<div className="tip" onClick={toggleTip}>
-						<span>Tip</span>
-						<VscTriangleUp style={{ color: "#fff" }} />
-						<p className={tip ? "" : "hidden-tip"}>
-							Depending on whether your task is an indoor or outdoor task you
-							should check the weather forecast.
-						</p>
-					</div>
 				</Notepad>
 			</MasterContainer>
 		</>

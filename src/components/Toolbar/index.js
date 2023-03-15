@@ -1,8 +1,7 @@
-import styled from "styled-components";
 import { IoMenu, IoPartlySunnyOutline } from "react-icons/io5";
 import { VscCalendar, VscClearAll } from "react-icons/vsc";
 import { useState } from "react";
-import { StyledToolbar } from "./styles";
+import { ToolbarContainer } from "./styles";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -19,34 +18,50 @@ export function Toolbar({ toggleWeather, clearList }) {
 	const toggleDate = () => setShownDate(!shownDate);
 	return (
 		<>
-			<StyledToolbar open={isOpen}>
-				<button>
-					<IoMenu
-						className="action-icon__menu"
-						onClick={() => setIsOpen(!isOpen)}
-					/>
+			<ToolbarContainer open={isOpen}>
+				<button
+					className="action-icon__menu"
+					onClick={() => {
+						setIsOpen(!isOpen);
+						if (shownDate) setShownDate(false);
+					}}
+				>
+					<IoMenu className="action-icon__menu" />
+					<span>Menu</span>
 				</button>
-				<button>
-					<IoPartlySunnyOutline
-						className="widget-icon"
-						onClick={toggleWeather}
-					/>
+				<button
+					onClick={() => {
+						toggleWeather();
+						setIsOpen(false);
+					}}
+				>
+					<IoPartlySunnyOutline className="action-icon" />
+					<span>Clima</span>
 				</button>
-				<button>
-					<VscCalendar className="widget-icon" onClick={toggleDate} />
+				<button onClick={toggleDate}>
+					<VscCalendar className="action-icon" />
+					<span>Data</span>
 				</button>
-				<div className={shownDate ? "calendar active" : "calendar"}>
-					<h3>Month</h3>
-					<p>{month}</p>
-					<h3>Day</h3>
-					<p>{day}</p>
-					<h3>Year</h3>
-					<p>{year}</p>
-				</div>
-				<button>
-					<VscClearAll className="widget-icon" onClick={clearList} />
+				{shownDate && (
+					<div>
+						<h3>Month</h3>
+						<p>{month}</p>
+						<h3>Day</h3>
+						<p>{day}</p>
+						<h3>Year</h3>
+						<p>{year}</p>
+					</div>
+				)}
+				<button
+					onClick={() => {
+						clearList();
+						setIsOpen(false);
+					}}
+				>
+					<VscClearAll className="action-icon" />
+					<span>Limpar lista</span>
 				</button>
-			</StyledToolbar>
+			</ToolbarContainer>
 		</>
 	);
 }
