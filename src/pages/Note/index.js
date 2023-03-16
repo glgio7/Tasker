@@ -1,12 +1,14 @@
 import MasterContainer from "../../components/MasterContainer";
 import { useState, useEffect } from "react";
-import { Notepad, Item, CreateTask } from "./styles";
+import { Notepad, CreateTask } from "./styles";
 import { remainingDays, Toolbar } from "../../components/Toolbar";
-import { MdOutlineDelete, MdOutlineDone } from "react-icons/md";
+import TaskItem from "../../components/TaskItem";
 
 export default function Note() {
 	const [task, setTask] = useState("");
+
 	const [list, setList] = useState([]);
+
 	const [deadline, setDeadline] = useState();
 
 	useEffect(() => {
@@ -98,32 +100,23 @@ export default function Note() {
 							onChange={(e) => setDeadline(e.target.value)}
 						>
 							<option value="">Set deadline (in days)</option>
-							<option>1d</option>
-							<option>2d</option>
-							<option>3d</option>
-							<option>4d</option>
-							<option>5d</option>
+							<option>1 day</option>
+							<option>2 days</option>
+							<option>3 days</option>
+							<option>4 days</option>
+							<option>5 days</option>
 						</select>
 						<button onClick={addTask}>Add</button>
 					</CreateTask>
 					<ul>
 						{list.map((task) => (
-							<Item key={task.id} checked={task.checked}>
-								<p>{task.task}</p>
-								<span>
-									{task.checked
-										? "Done"
-										: `Deadline: ${task.deadline ? task.deadline : "Nope"}`}
-								</span>
-								<div className="edit-box">
-									<button onClick={() => toggleDone(task.id, task.checked)}>
-										<MdOutlineDone />
-									</button>
-									<button>
-										<MdOutlineDelete onClick={() => removeTask(task.id)} />
-									</button>
-								</div>
-							</Item>
+							<TaskItem
+								key={task.id}
+								checked={task.checked}
+								task={task}
+								remove={removeTask}
+								setDone={toggleDone}
+							/>
 						))}
 					</ul>
 				</Notepad>
