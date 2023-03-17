@@ -10,6 +10,7 @@ export const Notepad = styled.section`
 	border: 2px firebrick solid;
 
 	padding: 0.25rem 0.5rem;
+	margin-left: 1rem;
 
 	display: flex;
 	flex-direction: column;
@@ -76,6 +77,7 @@ export const Notepad = styled.section`
 		min-height: 60vh;
 
 		margin-top: calc(54px + 2rem);
+		margin-left: 0;
 	}
 `;
 

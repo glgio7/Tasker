@@ -5,7 +5,7 @@ export const Container = styled.main`
 	justify-content: space-between;
 	align-items: center;
 
-	width: 100%;
+	width: 100vw;
 	min-height: calc(100vh - 80px);
 	color: #fff;
 	padding: 2rem;
@@ -18,7 +18,7 @@ export const Container = styled.main`
 
 		opacity: 0.2;
 
-		background-image: url("/background-tasker.jpg");
+		background-image: url("/img/background-tasker.jpg");
 
 		z-index: -1;
 
@@ -32,75 +32,9 @@ export const Container = styled.main`
 		width: 100%;
 	}
 
-	///////////////////////////////////////////////////////////// HOME BELOW
-
-	.container-text,
-	.container-demo {
-		padding: 2rem 0;
-		width: 45%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.container-text p {
-		color: #fff;
-		font-size: 1.75rem;
-		margin-bottom: 1.25rem;
-		width: 90%;
-		&:first-child {
-			font-size: 2rem;
-			font-weight: bold;
-		}
-	}
-
-	.container-demo {
-		width: 35%;
-		border-radius: 2rem;
-		background-color: #151515;
-		/* background-image: url("/exemplo.jpg"); */
-		background-size: contain;
-		background-position: center;
-		background-repeat: no-repeat;
-	}
-
-	.container-demo div {
-		padding: 1rem;
-		border-radius: 2rem;
-		background-color: #101010;
-		display: flex;
-		align-items: center;
-		margin-block: 1rem;
-	}
-
-	h2 {
-		width: 90%;
-		margin-bottom: 1rem;
-		text-align: center;
-	}
-
-	.item {
-		width: 90%;
-
-		span {
-			background-color: #f22222;
-			width: 2rem;
-			border-radius: 50%;
-			text-align: center;
-			height: 2rem;
-			padding: 1rem;
-			margin-inline: 1rem;
-		}
-
-		p {
-			text-align: left;
-			font-size: 1rem;
-		}
-	}
-
 	@media screen and (max-width: 768px) {
+		justify-content: center;
 		flex-direction: column;
-		padding: 0 2rem;
-		padding-bottom: 2rem;
+		padding: 2rem 1rem;
 	}
 `;

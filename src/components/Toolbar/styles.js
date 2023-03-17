@@ -51,16 +51,23 @@ export const ToolbarContainer = styled.div`
 		height: 42px;
 	}
 
+	.live-date {
+		opacity: ${({ open }) => (open ? "1" : "0")};
+		pointer-events: ${({ open }) => (open ? "all" : "none")};
+	}
+
 	@media screen and (max-width: 768px) {
-		width: 95vw;
+		width: 90vw;
 		border-left: 2px outset #b22222;
 		border-top: none;
 		border-radius: 0 0 10px 10px;
 		margin-left: 0;
+
 		min-height: 54px;
 
 		position: absolute;
 		z-index: 90;
+		top: 0;
 
 		height: ${({ open }) => (open ? "100%" : "54px")};
 		flex-direction: row;

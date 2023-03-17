@@ -31,6 +31,7 @@ export const TaskContainer = styled.li`
 
 	span {
 		font-weight: bold;
+		text-align: center;
 		font-size: 1rem;
 
 		width: 15%;

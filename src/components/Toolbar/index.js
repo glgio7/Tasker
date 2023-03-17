@@ -11,7 +11,7 @@ const lastDay = JSON.stringify(new Date(year, month, 0)).slice(9, 11);
 
 export const remainingDays = parseInt(lastDay) - parseInt(day) + 1;
 
-export function Toolbar({ toggleWeather, clearList }) {
+export const Toolbar = ({ toggleWeather, clearList }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const [shownDate, setShownDate] = useState(false);
@@ -43,7 +43,7 @@ export function Toolbar({ toggleWeather, clearList }) {
 					<span>Data</span>
 				</button>
 				{shownDate && (
-					<div>
+					<div className="live-date">
 						<h3>Month</h3>
 						<p>{month}</p>
 						<h3>Day</h3>
@@ -56,6 +56,7 @@ export function Toolbar({ toggleWeather, clearList }) {
 					onClick={() => {
 						clearList();
 						setIsOpen(false);
+						setShownDate(false);
 					}}
 				>
 					<VscClearAll className="action-icon" />
@@ -64,4 +65,4 @@ export function Toolbar({ toggleWeather, clearList }) {
 			</ToolbarContainer>
 		</>
 	);
-}
+};

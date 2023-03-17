@@ -8,7 +8,7 @@ export default function Header() {
 		<StyledHeader>
 			<Link to={"/"}>
 				<h1>
-					<img className="logo" src="/utasker-logo.png" alt="" />
+					<img className="logo" src="/img/utasker-logo.png" alt="" />
 					<span>Tasker</span>
 				</h1>
 			</Link>
