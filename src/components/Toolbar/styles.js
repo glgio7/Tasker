@@ -13,7 +13,7 @@ export const ToolbarContainer = styled.div`
 
 	overflow: hidden;
 
-	background-color: ${({ theme }) => theme.containerColor};
+	background-color: ${({ theme }) => theme.backgroundColor};
 
 	text-align: center;
 
@@ -58,7 +58,7 @@ export const ToolbarContainer = styled.div`
 
 	@media screen and (max-width: 768px) {
 		width: 90vw;
-		border-left: 2px outset #b22222;
+		border-left: 2px outset ${({ theme }) => theme.buttonBackgroundColor};
 		border-top: none;
 		border-radius: 0 0 10px 10px;
 		margin-left: 0;

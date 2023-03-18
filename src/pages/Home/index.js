@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { GuideSection, TextSection } from "./styles";
 
 export default function Home() {
@@ -22,6 +23,9 @@ export default function Home() {
 				</p>
 			</TextSection>
 			<GuideSection>
+				<Link to={"/notepad"} className="button-iniciar">
+					Iniciar
+				</Link>
 				<h2>
 					Anote, organize e domine suas idéias: descubra como tornar isso
 					simples com nosso app.

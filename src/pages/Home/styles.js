@@ -6,9 +6,9 @@ export const TextSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	color: ${({ theme }) => theme.textColor};
 
 	p {
-		color: ${({ theme }) => theme.textColor};
 		font-size: 1.75rem;
 		margin-bottom: 1.25rem;
 		width: 90%;
@@ -40,11 +40,29 @@ export const GuideSection = styled.div`
 	width: 35%;
 	border-radius: 2rem;
 	background-color: ${({ theme }) => theme.containerColor};
+	color: ${({ theme }) => theme.textColor};
+
+	.button-iniciar {
+		cursor: pointer;
+
+		width: 90%;
+
+		background-color: ${({ theme }) => theme.secondaryColor};
+		color: ${({ theme }) => theme.logoColor};
+
+		padding: 1rem;
+		margin-bottom: 1rem;
+
+		text-align: center;
+		font-weight: bold;
+
+		border-radius: 9px;
+	}
 
 	div {
 		padding: 1rem;
 		border-radius: 2rem;
-		background-color: ${({ theme }) => theme.divColor};
+		background-color: ${({ theme }) => theme.backgroundColor};
 		display: flex;
 		align-items: center;
 		margin-block: 1rem;

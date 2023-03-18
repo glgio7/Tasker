@@ -35,16 +35,21 @@ export const StyledHeader = styled.header`
 		margin-top: 0.65rem;
 		margin-left: 1rem;
 
-		color: ${({ theme }) => theme.textColor};
+		color: ${({ theme }) => theme.logoColor};
 		font-family: "Pattaya", sans-serif;
 		font-size: 3rem;
 	}
 
-	.button-iniciar {
+	.color-picker {
+		cursor: pointer;
+
+		height: 2rem;
+		width: 8rem;
+
+		padding: 0 0.25rem;
+
 		background-color: ${({ theme }) => theme.backgroundColor};
 		color: ${({ theme }) => theme.textColor};
-
-		padding: 0.5rem 1rem;
 
 		text-align: center;
 
@@ -52,15 +57,24 @@ export const StyledHeader = styled.header`
 	}
 
 	@media screen and (max-width: 768px) {
-		padding: 0 2vw;
+		padding: 0.5rem;
 
 		.logo {
-			width: 54px;
+			width: 48px;
 		}
 
-		.button-iniciar {
-			margin-top: 0.65rem;
-			padding: 0.5rem;
+		span {
+			font-size: 2.5rem;
+
+			margin-left: 0.25rem;
+		}
+
+		.color-picker {
+			font-size: 0.8rem;
+
+			width: 6rem;
+
+			margin-top: 0.75rem;
 		}
 	}
 `;

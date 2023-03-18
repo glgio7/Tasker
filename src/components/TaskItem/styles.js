@@ -27,13 +27,13 @@ export const TaskContainer = styled.li`
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
+		color: ${({ theme }) => theme.textColor};
 	}
 
 	span {
 		font-weight: bold;
 		text-align: center;
 		font-size: 1rem;
-
 		width: 15%;
 	}
 

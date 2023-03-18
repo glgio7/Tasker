@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyledHeader } from "./styles";
 
-export default function Header() {
-	const userLocation = window.location.toString();
-
+export default function Header({ setColor }) {
 	return (
 		<StyledHeader>
 			<Link to={"/"}>
@@ -12,9 +10,18 @@ export default function Header() {
 					<span>Tasker</span>
 				</h1>
 			</Link>
-			<Link to={"/notepad"} className="button-iniciar">
-				{userLocation.includes("/notepad") ? "Notepad" : "Iniciar"}
-			</Link>
+
+			<select
+				className="color-picker"
+				onChange={(e) => {
+					if (e.target.value !== "") setColor(e.target.value);
+				}}
+			>
+				<option value="">Mudar tema</option>
+				<option value="default">Original</option>
+				<option value="lightOrange">Light Mode Orange</option>
+				<option value="darkBlue">Dark Mode Blue</option>
+			</select>
 		</StyledHeader>
 	);
 }

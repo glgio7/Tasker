@@ -18,6 +18,13 @@ export const Notepad = styled.section`
 
 	text-align: center;
 
+	background-color: ${({ theme }) => theme.backgroundColor};
+
+	h2,
+	h4 {
+		color: ${({ theme }) => theme.textColor};
+	}
+
 	iframe {
 		opacity: 0;
 
