@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ToolbarContainer = styled.div`
 	border-radius: 0 10px 10px 0;
-	border: 2px outset #b22222;
+	border: 2px ${({ theme }) => theme.buttonBackgroundColor} outset;
 	border-left: none;
 
 	width: ${({ open }) => (open ? "20%" : "3rem")};
@@ -13,7 +13,7 @@ export const ToolbarContainer = styled.div`
 
 	overflow: hidden;
 
-	background-color: #101010;
+	background-color: ${({ theme }) => theme.containerColor};
 
 	text-align: center;
 
@@ -29,17 +29,17 @@ export const ToolbarContainer = styled.div`
 		background-color: transparent;
 		opacity: ${({ open }) => (open ? "1" : "0")};
 		pointer-events: ${({ open }) => (open ? "all" : "none")};
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 		transition: all 300ms;
 	}
 
 	span {
 		display: block;
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 	}
 
 	.action-icon__menu {
-		color: #b22222;
+		color: ${({ theme }) => theme.buttonBackgroundColor};
 		min-width: 42px;
 		min-height: 42px;
 		opacity: 1;

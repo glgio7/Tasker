@@ -21,7 +21,7 @@ export const TaskContainer = styled.li`
 
 		text-align: left;
 
-		background-color: #151515;
+		background-color: ${({ theme }) => theme.containerColor};
 		opacity: ${({ done }) => (done ? "0.5" : "1")};
 
 		display: inline-flex;
@@ -43,7 +43,7 @@ export const TaskContainer = styled.li`
 
 		border-radius: 5px;
 
-		background-color: #111;
+		background-color: ${({ theme }) => theme.containerColor};
 
 		display: flex;
 		align-items: center;
@@ -59,8 +59,8 @@ export const TaskContainer = styled.li`
 		font-size: 1.5rem;
 		cursor: pointer;
 
-		background-color: #b22222;
-		color: #fff;
+		background-color: ${({ theme }) => theme.buttonBackgroundColor};
+		color: ${({ theme }) => theme.textColor};
 
 		width: 100%;
 
@@ -70,8 +70,8 @@ export const TaskContainer = styled.li`
 		transition: all 300ms;
 
 		&:hover {
-			background-color: #fff;
-			color: firebrick;
+			background-color: ${({ theme }) => theme.textColor};
+			color: ${({ theme }) => theme.buttonBackgroundColor};
 		}
 	}
 

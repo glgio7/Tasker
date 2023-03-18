@@ -8,7 +8,7 @@ export const TextSection = styled.div`
 	align-items: center;
 
 	p {
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 		font-size: 1.75rem;
 		margin-bottom: 1.25rem;
 		width: 90%;
@@ -39,12 +39,12 @@ export const GuideSection = styled.div`
 	align-items: center;
 	width: 35%;
 	border-radius: 2rem;
-	background-color: #151515;
+	background-color: ${({ theme }) => theme.containerColor};
 
 	div {
 		padding: 1rem;
 		border-radius: 2rem;
-		background-color: #101010;
+		background-color: ${({ theme }) => theme.divColor};
 		display: flex;
 		align-items: center;
 		margin-block: 1rem;
@@ -60,7 +60,7 @@ export const GuideSection = styled.div`
 		width: 90%;
 
 		span {
-			background-color: #f22222;
+			background-color: ${({ theme }) => theme.secondaryColor};
 			width: 2rem;
 			border-radius: 50%;
 			text-align: center;

@@ -7,7 +7,7 @@ export const Notepad = styled.section`
 	width: 100%;
 
 	border-radius: 10px;
-	border: 2px firebrick solid;
+	border: 2px ${({ theme }) => theme.buttonBackgroundColor} solid;
 
 	padding: 0.25rem 0.5rem;
 	margin-left: 1rem;
@@ -53,8 +53,8 @@ export const Notepad = styled.section`
 		width: 100%;
 		height: 2rem;
 
-		background-color: #b22222;
-		color: #fff;
+		background-color: ${({ theme }) => theme.buttonBackgroundColor};
+		color: ${({ theme }) => theme.textColor};
 
 		transition: all 300ms;
 	}
@@ -94,7 +94,7 @@ export const CreateTask = styled.div`
 
 		font-size: 1rem;
 
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 
 		padding: 3px 0.5rem;
 
@@ -102,7 +102,7 @@ export const CreateTask = styled.div`
 		border: none;
 		outline: none;
 
-		background-color: #151515;
+		background-color: ${({ theme }) => theme.containerColor};
 		&:focus {
 			border: firebrick solid thin;
 		}
@@ -113,9 +113,9 @@ export const CreateTask = styled.div`
 		border-radius: 5px;
 		outline: none;
 
-		background-color: #151515;
+		background-color: ${({ theme }) => theme.containerColor};
 
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 
 		font-size: 1rem;
 		text-align: center;
@@ -140,9 +140,9 @@ export const CreateTask = styled.div`
 		justify-content: center;
 		align-items: center;
 
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 
-		background-color: #b22222;
+		background-color: ${({ theme }) => theme.buttonBackgroundColor};
 
 		transition: all 300ms;
 

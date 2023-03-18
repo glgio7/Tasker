@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
+const Container = styled.main`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -12,6 +12,8 @@ export const Container = styled.main`
 
 	position: relative;
 	z-index: 5;
+
+	background-color: ${({ theme }) => theme.backgroundColor};
 
 	.background {
 		position: absolute;
@@ -38,3 +40,5 @@ export const Container = styled.main`
 		padding: 2rem 1rem;
 	}
 `;
+
+export default Container;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-	background-color: #7d0103;
+	background-color: ${({ theme }) => theme.primaryColor};
 
 	height: 80px;
 	width: 100vw;
@@ -17,11 +17,10 @@ export const StyledHeader = styled.header`
 	}
 
 	.logo {
-		opacity: 0.7;
+		background-color: rgba(0, 0, 0, 0.25);
+		box-shadow: 3px 0px 5px rgba(255, 255, 255, 0.5);
 
-		background-color: black;
-
-		padding: 0.5rem;
+		padding: 0.25rem;
 		border-radius: 10px;
 
 		width: 60px;
@@ -36,14 +35,14 @@ export const StyledHeader = styled.header`
 		margin-top: 0.65rem;
 		margin-left: 1rem;
 
-		color: #fff;
+		color: ${({ theme }) => theme.textColor};
 		font-family: "Pattaya", sans-serif;
 		font-size: 3rem;
 	}
 
 	.button-iniciar {
-		background-color: #000;
-		color: #fff;
+		background-color: ${({ theme }) => theme.backgroundColor};
+		color: ${({ theme }) => theme.textColor};
 
 		padding: 0.5rem 1rem;
 
