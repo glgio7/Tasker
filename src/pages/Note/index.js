@@ -27,13 +27,11 @@ const Note = () => {
 	return (
 		<>
 			<Toolbar toggleWeather={toggleWeather} clearList={clearList} />
-			<Notepad>
+			<Notepad onLoad={() => window.scrollTo(0, 0)}>
 				<h2>Notepad</h2>
 				<h4>
-					<span style={{ color: "firebrick", fontWeight: "bold" }}>
-						{remainingDays}
-					</span>{" "}
-					{remainingDays === 1 ? "day" : "days"} left for next month.
+					<span>{remainingDays}</span> {remainingDays === 1 ? "day" : "days"}{" "}
+					left for next month.
 				</h4>
 				<iframe
 					src="https://climaki.vercel.app"

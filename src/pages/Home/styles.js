@@ -47,8 +47,10 @@ export const GuideSection = styled.div`
 
 		width: 90%;
 
-		background-color: ${({ theme }) => theme.secondaryColor};
-		color: ${({ theme }) => theme.logoColor};
+		background-color: ${({ theme }) => theme.primaryColor};
+		color: ${({ theme }) => theme.buttonTextColor};
+
+		opacity: 1;
 
 		padding: 1rem;
 		margin-bottom: 1rem;
@@ -78,7 +80,7 @@ export const GuideSection = styled.div`
 		width: 90%;
 
 		span {
-			background-color: ${({ theme }) => theme.secondaryColor};
+			background-color: ${({ theme }) => theme.buttonColor};
 			width: 2rem;
 			border-radius: 50%;
 			text-align: center;

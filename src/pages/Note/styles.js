@@ -7,7 +7,7 @@ export const Notepad = styled.section`
 	width: 100%;
 
 	border-radius: 10px;
-	border: 2px ${({ theme }) => theme.buttonBackgroundColor} solid;
+	border: 2px ${({ theme }) => theme.primaryColor} solid;
 
 	padding: 0.25rem 0.5rem;
 	margin-left: 1rem;
@@ -23,6 +23,10 @@ export const Notepad = styled.section`
 	h2,
 	h4 {
 		color: ${({ theme }) => theme.textColor};
+	}
+
+	span:first-child {
+		color: ${({ theme }) => theme.primaryColor};
 	}
 
 	iframe {
@@ -58,10 +62,10 @@ export const Notepad = styled.section`
 		z-index: 10;
 
 		width: 100%;
-		height: 2rem;
+		height: 3rem;
 
-		background-color: ${({ theme }) => theme.buttonBackgroundColor};
-		color: ${({ theme }) => theme.textColor};
+		background-color: ${({ theme }) => theme.primaryColor};
+		color: ${({ theme }) => theme.buttonTextColor};
 
 		transition: all 300ms;
 	}
@@ -110,9 +114,7 @@ export const CreateTask = styled.div`
 		outline: none;
 
 		background-color: ${({ theme }) => theme.containerColor};
-		&:focus {
-			border: firebrick solid thin;
-		}
+		border: 2px ${({ theme }) => theme.primaryColor} outset;
 	}
 
 	select {
@@ -121,7 +123,6 @@ export const CreateTask = styled.div`
 		outline: none;
 
 		background-color: ${({ theme }) => theme.containerColor};
-
 		color: ${({ theme }) => theme.textColor};
 
 		font-size: 1rem;
@@ -130,6 +131,9 @@ export const CreateTask = styled.div`
 		width: 15%;
 
 		padding: 0 0.5rem;
+	}
+
+	option {
 	}
 
 	button {
@@ -147,9 +151,9 @@ export const CreateTask = styled.div`
 		justify-content: center;
 		align-items: center;
 
-		color: ${({ theme }) => theme.textColor};
+		color: ${({ theme }) => theme.buttonTextColor};
 
-		background-color: ${({ theme }) => theme.buttonBackgroundColor};
+		background-color: ${({ theme }) => theme.primaryColor};
 
 		transition: all 300ms;
 

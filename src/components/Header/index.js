@@ -17,10 +17,14 @@ export default function Header({ setColor }) {
 					if (e.target.value !== "") setColor(e.target.value);
 				}}
 			>
-				<option value="">Mudar tema</option>
+				<option value="">Theme</option>
 				<option value="default">Original</option>
-				<option value="lightOrange">Light Mode Orange</option>
-				<option value="darkBlue">Dark Mode Blue</option>
+				<option value="darkModeOrange">Dark Mode Orange</option>
+				<option value="darkModeBlue">Dark Mode Blue</option>
+				<option value="darkModePurple">Dark Mode Purple</option>
+				<option value="lightModeOrange">Light Mode Orange</option>
+				<option value="lightModeGreen">Light Mode Green</option>
+				<option value="lightModePurple">Light Mode Purple</option>
 			</select>
 		</StyledHeader>
 	);

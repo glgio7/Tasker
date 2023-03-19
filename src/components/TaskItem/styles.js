@@ -57,10 +57,11 @@ export const TaskContainer = styled.li`
 		border: none;
 
 		font-size: 1.5rem;
+
 		cursor: pointer;
 
-		background-color: ${({ theme }) => theme.buttonBackgroundColor};
-		color: ${({ theme }) => theme.textColor};
+		background-color: ${({ theme }) => theme.buttonColor};
+		color: ${({ theme }) => theme.buttonTextColor};
 
 		width: 100%;
 
@@ -71,7 +72,7 @@ export const TaskContainer = styled.li`
 
 		&:hover {
 			background-color: ${({ theme }) => theme.textColor};
-			color: ${({ theme }) => theme.buttonBackgroundColor};
+			color: ${({ theme }) => theme.buttonColor};
 		}
 	}
 

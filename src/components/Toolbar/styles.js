@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ToolbarContainer = styled.div`
 	border-radius: 0 10px 10px 0;
-	border: 2px ${({ theme }) => theme.buttonBackgroundColor} outset;
+	border: 2px ${({ theme }) => theme.primaryColor} outset;
 	border-left: none;
 
 	width: ${({ open }) => (open ? "20%" : "3rem")};
@@ -13,7 +13,7 @@ export const ToolbarContainer = styled.div`
 
 	overflow: hidden;
 
-	background-color: ${({ theme }) => theme.backgroundColor};
+	background-color: ${({ theme }) => theme.containerColor};
 
 	text-align: center;
 
@@ -29,7 +29,7 @@ export const ToolbarContainer = styled.div`
 		background-color: transparent;
 		opacity: ${({ open }) => (open ? "1" : "0")};
 		pointer-events: ${({ open }) => (open ? "all" : "none")};
-		color: ${({ theme }) => theme.textColor};
+		color: ${({ theme }) => theme.primaryColor};
 		transition: all 300ms;
 	}
 
@@ -39,7 +39,6 @@ export const ToolbarContainer = styled.div`
 	}
 
 	.action-icon__menu {
-		color: ${({ theme }) => theme.buttonBackgroundColor};
 		min-width: 42px;
 		min-height: 42px;
 		opacity: 1;
@@ -58,7 +57,7 @@ export const ToolbarContainer = styled.div`
 
 	@media screen and (max-width: 768px) {
 		width: 90vw;
-		border-left: 2px outset ${({ theme }) => theme.buttonBackgroundColor};
+		border-left: 2px outset ${({ theme }) => theme.primaryColor};
 		border-top: none;
 		border-radius: 0 0 10px 10px;
 		margin-left: 0;

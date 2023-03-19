@@ -11,31 +11,61 @@ import { useState } from "react";
 
 const themes = {
 	default: {
-		primaryColor: "#7d0103",
-		secondaryColor: "#f22222",
 		backgroundColor: "#101010",
-		buttonBackgroundColor: "#b22222",
+		primaryColor: "#ac0000",
 		containerColor: "#151515",
+		buttonColor: "#b22222",
 		textColor: "#fff",
-		logoColor: "#fff",
+		buttonTextColor: "#fff",
 	},
-	darkBlue: {
+	darkModeBlue: {
+		backgroundColor: "#101010",
 		primaryColor: "#0079d9",
-		secondaryColor: "#008eff",
-		backgroundColor: "#101010",
-		buttonBackgroundColor: "#00a7e7",
 		containerColor: "#151515",
+		buttonColor: "#00a7e7",
 		textColor: "#fff",
-		logoColor: "#fff",
+		buttonTextColor: "#fff",
 	},
-	lightOrange: {
+	darkModeOrange: {
+		backgroundColor: "#101010",
 		primaryColor: "#ff6f00",
-		secondaryColor: "#ff8800",
+		containerColor: "#151515",
+		buttonColor: "#ff8800",
+		textColor: "#fff",
+		buttonTextColor: "#000",
+	},
+	lightModeOrange: {
 		backgroundColor: "#ddd",
-		buttonBackgroundColor: "#ff9500",
+		primaryColor: "#ff6f00",
 		containerColor: "#fff",
 		textColor: "#000",
-		logoColor: "#fff",
+		buttonColor: "#ff8800",
+		buttonTextColor: "#fff",
+	},
+
+	lightModePurple: {
+		backgroundColor: "#ddd",
+		primaryColor: "#6a0dad",
+		containerColor: "#fff",
+		textColor: "#000",
+		buttonColor: "#ad4dff",
+		buttonTextColor: "#fff",
+	},
+	darkModePurple: {
+		backgroundColor: "#101010",
+		primaryColor: "#6a0dad",
+		containerColor: "#151515",
+		textColor: "#fff",
+		buttonColor: "#ad4dff",
+		buttonTextColor: "#fff",
+	},
+	lightModeGreen: {
+		backgroundColor: "#ddd",
+		primaryColor: "#008000",
+		containerColor: "#fff",
+		textColor: "#000",
+		buttonColor: "#00aa47",
+		buttonTextColor: "#fff",
 	},
 };
 
