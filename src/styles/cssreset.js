@@ -13,7 +13,7 @@ export const GlobalCSS = createGlobalStyle`
     overflow-x: hidden;
 }
 
-body{
+html, body{
     width: 100%;
 }
 

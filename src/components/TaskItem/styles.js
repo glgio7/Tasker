@@ -76,18 +76,18 @@ export const TaskContainer = styled.li`
 		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		flex-wrap: wrap;
 		flex-direction: column;
 
 		span {
 			font-size: 0.8rem;
-			text-align: center;
 		}
 
 		p,
 		span,
 		.edit-box {
+			text-align: center;
 			width: 100%;
 		}
 

@@ -8,7 +8,7 @@ const TaskItem = ({ task, setDone, remove }) => {
 			<span>
 				{task.checked
 					? "Done"
-					: `Deadline: ${task.deadline ? task.deadline : "Nope"}`}
+					: `Deadline: ${task.deadline ? task.deadline : "None"}`}
 			</span>
 			<div className="edit-box">
 				<button onClick={() => setDone(task.id, task.checked)}>

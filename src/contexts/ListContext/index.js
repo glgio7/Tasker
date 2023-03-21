@@ -4,9 +4,15 @@ import { createContext } from "react";
 export const ListContext = createContext();
 
 const ListProvider = (props) => {
+	const [list, setList] = useState([]);
+
+	const [filteredList, setFilteredList] = useState([]);
+
 	const [task, setTask] = useState("");
 
-	const [list, setList] = useState([]);
+	const [categorie, setCategorie] = useState("All");
+
+	const [currentCategory, setCurrentCategory] = useState("");
 
 	const [deadline, setDeadline] = useState();
 
@@ -27,16 +33,22 @@ const ListProvider = (props) => {
 			task: task,
 			checked: false,
 			deadline: deadline,
+			categorie: categorie,
 		};
 		setList([...list, newTask]);
 		setTask("");
 		setDeadline("");
+		setCategorie("");
 		saveList([...list, newTask]);
 	};
 	const removeTask = (id) => {
 		const newList = list.filter((task) => task.id !== id);
 		setList(newList);
 		saveList(newList);
+		setFilteredList(
+			newList.filter((item) => item.categorie === currentCategory)
+		);
+		// filterCategorie(categorie);
 	};
 	const toggleDone = (id, checked) => {
 		const index = list.findIndex((task) => task.id === id);
@@ -53,6 +65,12 @@ const ListProvider = (props) => {
 		}
 	};
 
+	const filterCategorie = (value) => {
+		const filtered = list.filter((item) => item.categorie === value);
+		setFilteredList(filtered);
+		setCurrentCategory(value);
+	};
+
 	const contextValue = {
 		task,
 		setTask,
@@ -63,6 +81,11 @@ const ListProvider = (props) => {
 		addTask,
 		removeTask,
 		toggleDone,
+		categorie,
+		setCategorie,
+		filteredList,
+		setFilteredList,
+		filterCategorie,
 	};
 
 	return (

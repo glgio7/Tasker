@@ -18,7 +18,7 @@ export const TextSection = styled.div`
 		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		width: 100%;
 
 		p {
@@ -95,7 +95,7 @@ export const GuideSection = styled.div`
 		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		width: 100%;
 	}
 `;

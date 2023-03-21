@@ -74,26 +74,20 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-			<GlobalCSS />
-			<ThemeProvider theme={themes[color]}>
-				<Header setColor={setColor} />
-				<Container>
-					<div className="background"></div>
-					<Routes>
-						<Route exact path="/" element={<Home />} />
-						<Route
-							exact
-							path="/notepad"
-							element={
-								<ListProvider>
-									<Note />
-								</ListProvider>
-							}
-						/>
-					</Routes>
-				</Container>
-				<Footer />
-			</ThemeProvider>
+			<ListProvider>
+				<GlobalCSS />
+				<ThemeProvider theme={themes[color]}>
+					<Header setColor={setColor} />
+					<Container>
+						<div className="background"></div>
+						<Routes>
+							<Route exact path="/" element={<Home />} />
+							<Route exact path="/notepad" element={<Note />} />
+						</Routes>
+					</Container>
+					<Footer />
+				</ThemeProvider>
+			</ListProvider>
 		</BrowserRouter>
 	);
 };

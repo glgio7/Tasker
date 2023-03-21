@@ -1,5 +1,5 @@
 import { ListContext } from "../../contexts/ListContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { Notepad, CreateTask } from "./styles";
 import TaskItem from "../../components/TaskItem";
@@ -16,6 +16,9 @@ const Note = () => {
 		addTask,
 		removeTask,
 		toggleDone,
+		categorie,
+		setCategorie,
+		filteredList,
 	} = useContext(ListContext);
 
 	const [weather, setWeather] = useState(false);
@@ -23,6 +26,7 @@ const Note = () => {
 	const toggleWeather = () => setWeather(!weather);
 
 	const submitOnEnter = (props) => (props.keyCode === 13 ? addTask() : "");
+	useEffect(() => {}, [list]);
 
 	return (
 		<>
@@ -33,20 +37,6 @@ const Note = () => {
 					<span>{remainingDays}</span> {remainingDays === 1 ? "day" : "days"}{" "}
 					left for next month.
 				</h4>
-				<iframe
-					src="https://climaki.vercel.app"
-					className={weather ? "active" : ""}
-					title="weather"
-					crossOrigin="anonymous"
-				></iframe>
-				<button
-					className={weather ? "close-weather active" : "close-weather"}
-					onClick={toggleWeather}
-				>
-					{" "}
-					Voltar para Notepad
-				</button>
-
 				<CreateTask>
 					<input
 						type="text"
@@ -66,18 +56,57 @@ const Note = () => {
 						<option>5 days</option>
 					</select>
 					<button onClick={addTask}>Add</button>
+
+					<select
+						className="categories-selector"
+						value={categorie}
+						onChange={(e) => setCategorie(e.target.value)}
+					>
+						<option value={"All"}>Set Categorie</option>
+						<option>Daily</option>
+						<option>Leisure</option>
+						<option>Personal</option>
+						<option>Professional</option>
+						<option>Financial</option>
+					</select>
 				</CreateTask>
 
+				<h2 className="list-title">
+					{filteredList.length > 0 ? filteredList[0].categorie : "All"}
+				</h2>
 				<ul>
-					{list.map((task) => (
-						<TaskItem
-							key={task.id}
-							task={task}
-							remove={removeTask}
-							setDone={toggleDone}
-						/>
-					))}
+					{filteredList.length > 0
+						? filteredList.map((task) => (
+								<TaskItem
+									key={task.id}
+									task={task}
+									remove={removeTask}
+									setDone={toggleDone}
+								/>
+						  ))
+						: list.map((task) => (
+								<TaskItem
+									key={task.id}
+									task={task}
+									remove={removeTask}
+									setDone={toggleDone}
+								/>
+						  ))}
 				</ul>
+
+				{/* ////////////////// Using tool area */}
+
+				<iframe
+					src="https://climaki.vercel.app"
+					className={weather ? "active" : ""}
+					title="weather"
+				></iframe>
+				<button
+					className={weather ? "close-weather active" : "close-weather"}
+					onClick={toggleWeather}
+				>
+					Voltar para Notepad
+				</button>
 			</Notepad>
 		</>
 	);

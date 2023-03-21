@@ -23,6 +23,15 @@ export const Notepad = styled.section`
 	h2,
 	h4 {
 		color: ${({ theme }) => theme.textColor};
+		width: 100%;
+	}
+
+	h2.list-title {
+		margin-block: 0.5rem;
+		padding-block: 0.5rem;
+		border-radius: 10px;
+		background-color: ${({ theme }) => theme.containerColor};
+		color: ${({ theme }) => theme.primaryColor};
 	}
 
 	span:first-child {
@@ -83,8 +92,8 @@ export const Notepad = styled.section`
 		width: 100%;
 	}
 
-	@media screen and (max-width: 768px) {
-		width: 95vw;
+	@media screen and (max-width: 900px) {
+		width: 95%;
 		min-height: 60vh;
 
 		margin-top: calc(54px + 2rem);
@@ -94,11 +103,17 @@ export const Notepad = styled.section`
 
 export const CreateTask = styled.div`
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 
 	width: 100%;
 
+	padding: 1rem;
 	margin: 1rem 0;
+
+	border-radius: 5px;
+
+	background-color: ${({ theme }) => theme.containerColor};
 
 	input {
 		width: 65%;
@@ -122,7 +137,7 @@ export const CreateTask = styled.div`
 		border-radius: 5px;
 		outline: none;
 
-		background-color: ${({ theme }) => theme.containerColor};
+		background-color: ${({ theme }) => theme.backgroundColor};
 		color: ${({ theme }) => theme.textColor};
 
 		font-size: 1rem;
@@ -130,10 +145,23 @@ export const CreateTask = styled.div`
 
 		width: 15%;
 
+		cursor: pointer;
+
 		padding: 0 0.5rem;
 	}
 
-	option {
+	.categories-selector {
+		appearance: none;
+		width: 100%;
+		height: 40px;
+
+		margin-top: 0.5rem;
+
+		font-weight: bold;
+
+		color: ${({ theme }) => theme.buttonTextColor};
+
+		background-color: ${({ theme }) => theme.buttonColor};
 	}
 
 	button {
@@ -161,9 +189,7 @@ export const CreateTask = styled.div`
 			opacity: 0.8;
 		}
 	}
-	@media screen and (max-width: 768px) {
-		flex-wrap: wrap;
-
+	@media screen and (max-width: 900px) {
 		button,
 		select {
 			margin-top: 0.5rem;

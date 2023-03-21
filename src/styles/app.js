@@ -3,17 +3,19 @@ import styled from "styled-components";
 const Container = styled.main`
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	/* align-items: center; */
 
-	width: 100vw;
+	width: 100%;
 	min-height: calc(100vh - 80px);
+
+	background-color: ${({ theme }) => theme.backgroundColor};
 	color: #fff;
+
 	padding: 2rem;
 
 	position: relative;
-	z-index: 5;
 
-	background-color: ${({ theme }) => theme.backgroundColor};
+	z-index: 5;
 
 	.background {
 		position: absolute;
@@ -34,7 +36,7 @@ const Container = styled.main`
 		width: 100%;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		justify-content: center;
 		flex-direction: column;
 		padding: 2rem 1rem;

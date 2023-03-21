@@ -1,7 +1,8 @@
 import { IoMenu, IoPartlySunnyOutline } from "react-icons/io5";
-import { VscCalendar, VscClearAll } from "react-icons/vsc";
-import { useState } from "react";
+import { VscClearAll, VscSymbolOperator } from "react-icons/vsc";
+import { useContext, useState } from "react";
 import { ToolbarContainer } from "./styles";
+import { ListContext } from "../../contexts/ListContext";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -13,55 +14,115 @@ export const remainingDays = parseInt(lastDay) - parseInt(day) + 1;
 
 export const Toolbar = ({ toggleWeather, clearList }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [toolsOpen, setToolsOpen] = useState(false);
+	const [categoriesOpen, setCategoriesOpen] = useState(false);
 
-	const [shownDate, setShownDate] = useState(false);
-	const toggleDate = () => setShownDate(!shownDate);
+	const { list, setFilteredList, filterCategorie } = useContext(ListContext);
+
+	const closeOptions = () => {
+		setToolsOpen(false);
+		setCategoriesOpen(false);
+	};
+
+	const categoriesValues = [
+		"All",
+		"Daily",
+		"Leisure",
+		"Personal",
+		"Professional",
+		"Financial",
+	];
+
 	return (
 		<>
 			<ToolbarContainer open={isOpen}>
 				<button
-					className="action-icon__menu"
+					className="menu"
 					onClick={() => {
 						setIsOpen(!isOpen);
-						if (shownDate) setShownDate(false);
 					}}
 				>
-					<IoMenu className="action-icon__menu" />
+					<IoMenu className="menu__action-icon" />
 					<span>Menu</span>
 				</button>
+				<button className="options-button" onClick={() => setToolsOpen(true)}>
+					Tools
+				</button>
 				<button
-					onClick={() => {
-						toggleWeather();
-						setIsOpen(false);
-					}}
+					className="options-button"
+					onClick={() => setCategoriesOpen(true)}
 				>
-					<IoPartlySunnyOutline className="action-icon" />
-					<span>Clima</span>
+					Categories
 				</button>
-				<button onClick={toggleDate}>
-					<VscCalendar className="action-icon" />
-					<span>Data</span>
-				</button>
-				{shownDate && (
-					<div className="live-date">
-						<h3>Month</h3>
-						<p>{month}</p>
-						<h3>Day</h3>
-						<p>{day}</p>
-						<h3>Year</h3>
-						<p>{year}</p>
-					</div>
-				)}
-				<button
-					onClick={() => {
-						clearList();
-						setIsOpen(false);
-						setShownDate(false);
-					}}
+
+				<div
+					className={toolsOpen || categoriesOpen ? "wrapper active" : "wrapper"}
 				>
-					<VscClearAll className="action-icon" />
-					<span>Limpar lista</span>
-				</button>
+					<button className="options-button" onClick={closeOptions}>
+						Voltar
+					</button>
+
+					{/* // Tools */}
+					{toolsOpen && (
+						<>
+							<button
+								onClick={() => {
+									toggleWeather();
+									closeOptions();
+									setIsOpen(false);
+								}}
+							>
+								<IoPartlySunnyOutline className="action-icon" />
+								<span>Clima</span>
+							</button>
+
+							<button
+								onClick={() => {
+									setIsOpen(false);
+									closeOptions();
+								}}
+							>
+								<VscSymbolOperator className="action-icon" />
+								<span>Calculadora</span>
+							</button>
+							<button
+								onClick={() => {
+									clearList();
+									setIsOpen(false);
+									closeOptions();
+								}}
+							>
+								<VscClearAll className="action-icon" />
+								<span>Limpar lista</span>
+							</button>
+						</>
+					)}
+
+					{/* // Categories */}
+
+					{categoriesOpen &&
+						categoriesValues.map((item, index) => (
+							<>
+								<button
+									key={index}
+									className="options-button categories"
+									onClick={() => {
+										if (item === "All") {
+											setFilteredList([]);
+											setIsOpen(false);
+											closeOptions();
+										} else {
+											filterCategorie(item);
+											setIsOpen(false);
+											closeOptions();
+										}
+									}}
+								>
+									{item}
+								</button>
+							</>
+						))}
+				</div>
 			</ToolbarContainer>
 		</>
 	);

@@ -4,7 +4,7 @@ export const StyledHeader = styled.header`
 	background-color: ${({ theme }) => theme.containerColor};
 
 	height: 80px;
-	width: 100vw;
+	width: 100%;
 
 	display: flex;
 	align-items: center;
@@ -64,7 +64,7 @@ export const StyledHeader = styled.header`
 		background-color: ${({ theme }) => theme.backgroundColor};
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		padding: 0.5rem;
 
 		.logo {
