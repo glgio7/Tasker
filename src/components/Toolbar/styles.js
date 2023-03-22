@@ -53,12 +53,22 @@ export const ToolbarContainer = styled.div`
 
 		font-weight: bold;
 
+		&:first-child {
+			margin-bottom: 4rem;
+		}
+
 		background-color: ${({ theme }) => theme.primaryColor};
 		color: ${({ theme }) => theme.buttonTextColor};
+
+		&:hover {
+			background-color: ${({ theme }) => theme.buttonTextColor};
+			color: ${({ theme }) => theme.buttonColor};
+		}
 	}
 
 	.options-button.categories {
 		background-color: ${({ theme }) => theme.buttonColor};
+
 		&:hover {
 			background-color: ${({ theme }) => theme.buttonTextColor};
 			color: ${({ theme }) => theme.buttonColor};

@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const StyledFooter = styled.footer`
 	background-color: #000;
 
-	width: 100vw;
+	width: 100%;
 	height: 30px;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
+	overflow: hidden;
 
 	p {
 		color: #fff;

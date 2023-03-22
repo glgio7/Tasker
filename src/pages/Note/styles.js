@@ -59,7 +59,7 @@ export const Notepad = styled.section`
 		pointer-events: all;
 	}
 
-	.close-weather {
+	.close-iframe {
 		opacity: 0;
 
 		cursor: pointer;
@@ -76,10 +76,12 @@ export const Notepad = styled.section`
 		background-color: ${({ theme }) => theme.primaryColor};
 		color: ${({ theme }) => theme.buttonTextColor};
 
+		font-weight: bold;
+
 		transition: all 300ms;
 	}
 
-	.close-weather.active {
+	.close-iframe.active {
 		opacity: 1;
 		pointer-events: all;
 	}

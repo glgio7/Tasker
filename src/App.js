@@ -70,7 +70,11 @@ const themes = {
 };
 
 const App = () => {
-	const [color, setColor] = useState("default");
+	const preferredTheme = JSON.parse(localStorage.getItem("preferredTheme"));
+
+	const [color, setColor] = useState(
+		preferredTheme ? preferredTheme : "default"
+	);
 
 	return (
 		<BrowserRouter>

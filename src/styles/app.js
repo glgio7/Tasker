@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Container = styled.main`
 	display: flex;
 	justify-content: space-between;
-	/* align-items: center; */
 
 	width: 100%;
 	min-height: calc(100vh - 80px);
@@ -37,9 +36,9 @@ const Container = styled.main`
 	}
 
 	@media screen and (max-width: 900px) {
-		justify-content: center;
 		flex-direction: column;
-		padding: 2rem 1rem;
+		align-items: center;
+		padding: 2rem 2rem;
 	}
 `;
 

@@ -19,7 +19,7 @@ export const TaskContainer = styled.li`
 		min-height: 40px;
 		width: 65%;
 
-		text-align: left;
+		text-align: center;
 
 		background-color: ${({ theme }) => theme.containerColor};
 		opacity: ${({ done }) => (done ? "0.5" : "1")};
@@ -87,7 +87,6 @@ export const TaskContainer = styled.li`
 		p,
 		span,
 		.edit-box {
-			text-align: center;
 			width: 100%;
 		}
 

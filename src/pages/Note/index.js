@@ -16,9 +16,10 @@ const Note = () => {
 		addTask,
 		removeTask,
 		toggleDone,
-		categorie,
-		setCategorie,
+		category,
+		setCategory,
 		filteredList,
+		currentCategory,
 	} = useContext(ListContext);
 
 	const [weather, setWeather] = useState(false);
@@ -48,7 +49,7 @@ const Note = () => {
 						value={deadline}
 						onChange={(e) => setDeadline(e.target.value)}
 					>
-						<option value="">Set deadline (in days)</option>
+						<option value="">Deadline</option>
 						<option>1 day</option>
 						<option>2 days</option>
 						<option>3 days</option>
@@ -59,10 +60,11 @@ const Note = () => {
 
 					<select
 						className="categories-selector"
-						value={categorie}
-						onChange={(e) => setCategorie(e.target.value)}
+						value={category}
+						onChange={(e) => setCategory(e.target.value)}
 					>
-						<option value={"All"}>Set Categorie</option>
+						<option value={"All"}>Set Category</option>
+						<option value={"All"}>None</option>
 						<option>Daily</option>
 						<option>Leisure</option>
 						<option>Personal</option>
@@ -71,30 +73,20 @@ const Note = () => {
 					</select>
 				</CreateTask>
 
-				<h2 className="list-title">
-					{filteredList.length > 0 ? filteredList[0].categorie : "All"}
-				</h2>
+				<h2 className="list-title">{currentCategory}</h2>
 				<ul>
-					{filteredList.length > 0
-						? filteredList.map((task) => (
-								<TaskItem
-									key={task.id}
-									task={task}
-									remove={removeTask}
-									setDone={toggleDone}
-								/>
-						  ))
-						: list.map((task) => (
-								<TaskItem
-									key={task.id}
-									task={task}
-									remove={removeTask}
-									setDone={toggleDone}
-								/>
-						  ))}
+					{filteredList &&
+						filteredList.map((task) => (
+							<TaskItem
+								key={task.id}
+								task={task}
+								remove={removeTask}
+								setDone={toggleDone}
+							/>
+						))}
 				</ul>
 
-				{/* ////////////////// Using tool area */}
+				{/* ////////////////// Iframe container */}
 
 				<iframe
 					src="https://climaki.vercel.app"
@@ -102,7 +94,7 @@ const Note = () => {
 					title="weather"
 				></iframe>
 				<button
-					className={weather ? "close-weather active" : "close-weather"}
+					className={weather ? "close-iframe active" : "close-iframe"}
 					onClick={toggleWeather}
 				>
 					Voltar para Notepad

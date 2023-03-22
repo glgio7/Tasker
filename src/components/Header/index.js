@@ -15,6 +15,10 @@ export default function Header({ setColor }) {
 				className="color-picker"
 				onChange={(e) => {
 					if (e.target.value !== "") setColor(e.target.value);
+					localStorage.setItem(
+						"preferredTheme",
+						JSON.stringify(e.target.value)
+					);
 				}}
 			>
 				<option value="">Theme</option>

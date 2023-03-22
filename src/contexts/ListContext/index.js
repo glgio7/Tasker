@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createContext } from "react";
 
 export const ListContext = createContext();
@@ -6,15 +6,48 @@ export const ListContext = createContext();
 const ListProvider = (props) => {
 	const [list, setList] = useState([]);
 
-	const [filteredList, setFilteredList] = useState([]);
-
 	const [task, setTask] = useState("");
 
-	const [categorie, setCategorie] = useState("All");
-
-	const [currentCategory, setCurrentCategory] = useState("");
-
 	const [deadline, setDeadline] = useState();
+
+	const [category, setCategory] = useState("All");
+
+	// States to filter list
+
+	const [filteredList, setFilteredList] = useState(list);
+
+	const [currentCategory, setCurrentCategory] = useState("All");
+
+	// Define the current category based on value received by the button which calls the function
+
+	const filterCategory = useCallback(
+		(value) => {
+			if (value === "All") {
+				setFilteredList(list);
+			} else {
+				const filtered = list.filter((item) => item.category === value);
+				setFilteredList(filtered);
+			}
+
+			setCurrentCategory(value);
+			setCategory(value);
+		},
+		// Update whenever the full list changes
+		[list]
+	);
+
+	// Update the filtered list whenever the full list is modified
+
+	useEffect(() => {
+		if (currentCategory !== "All") {
+			const filtered = list.filter((item) => item.category === currentCategory);
+			setFilteredList(filtered);
+		} else {
+			setFilteredList(list);
+		}
+	}, [list, currentCategory]);
+
+	// Get list from local storage if it has a saved list
 
 	useEffect(() => {
 		const savedList = JSON.parse(localStorage.getItem("savedTasks"));
@@ -23,8 +56,12 @@ const ListProvider = (props) => {
 		}
 	}, []);
 
+	//Saves the list to local storage. It's called in every function that manipulates the list
+
 	const saveList = (value) =>
 		localStorage.setItem("savedTasks", JSON.stringify(value));
+
+	// Functions For user edit the list
 
 	const addTask = () => {
 		if (!task) return alert("Insira uma tarefa");
@@ -33,23 +70,20 @@ const ListProvider = (props) => {
 			task: task,
 			checked: false,
 			deadline: deadline,
-			categorie: categorie,
+			category: category,
 		};
 		setList([...list, newTask]);
 		setTask("");
 		setDeadline("");
-		setCategorie("");
 		saveList([...list, newTask]);
 	};
+
 	const removeTask = (id) => {
 		const newList = list.filter((task) => task.id !== id);
 		setList(newList);
 		saveList(newList);
-		setFilteredList(
-			newList.filter((item) => item.categorie === currentCategory)
-		);
-		// filterCategorie(categorie);
 	};
+
 	const toggleDone = (id, checked) => {
 		const index = list.findIndex((task) => task.id === id);
 		const checkStatus = list;
@@ -57,18 +91,13 @@ const ListProvider = (props) => {
 		setList([...checkStatus]);
 		saveList([...checkStatus]);
 	};
+
 	const clearList = () => {
 		const defaultList = [];
 		if (window.confirm("Are you sure you want to delete all tasks?")) {
 			setList(defaultList);
 			saveList(defaultList);
 		}
-	};
-
-	const filterCategorie = (value) => {
-		const filtered = list.filter((item) => item.categorie === value);
-		setFilteredList(filtered);
-		setCurrentCategory(value);
 	};
 
 	const contextValue = {
@@ -81,11 +110,12 @@ const ListProvider = (props) => {
 		addTask,
 		removeTask,
 		toggleDone,
-		categorie,
-		setCategorie,
+		category,
+		currentCategory,
+		setCategory,
 		filteredList,
 		setFilteredList,
-		filterCategorie,
+		filterCategory,
 	};
 
 	return (

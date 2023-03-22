@@ -17,7 +17,8 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 	const [toolsOpen, setToolsOpen] = useState(false);
 	const [categoriesOpen, setCategoriesOpen] = useState(false);
 
-	const { list, setFilteredList, filterCategorie } = useContext(ListContext);
+	const { list, setCurrentCategory, setFilteredList, filterCategory } =
+		useContext(ListContext);
 
 	const closeOptions = () => {
 		setToolsOpen(false);
@@ -101,26 +102,18 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 					{/* // Categories */}
 
 					{categoriesOpen &&
-						categoriesValues.map((item, index) => (
-							<>
-								<button
-									key={index}
-									className="options-button categories"
-									onClick={() => {
-										if (item === "All") {
-											setFilteredList([]);
-											setIsOpen(false);
-											closeOptions();
-										} else {
-											filterCategorie(item);
-											setIsOpen(false);
-											closeOptions();
-										}
-									}}
-								>
-									{item}
-								</button>
-							</>
+						categoriesValues.map((item) => (
+							<button
+								key={item}
+								className="options-button categories"
+								onClick={() => {
+									setIsOpen(false);
+									closeOptions();
+									filterCategory(item);
+								}}
+							>
+								{item}
+							</button>
 						))}
 				</div>
 			</ToolbarContainer>
