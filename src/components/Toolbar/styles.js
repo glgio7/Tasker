@@ -8,7 +8,7 @@ export const ToolbarContainer = styled.div`
 	width: ${({ open }) => (open ? "20%" : "3rem")};
 
 	margin-left: -2rem;
-	min-height: 80vh;
+	height: 80vh;
 	padding: ${({ open }) => (open ? "0rem" : "0 2rem")};
 
 	overflow: hidden;
@@ -128,8 +128,6 @@ export const ToolbarContainer = styled.div`
 		border-top: none;
 		border-radius: 0 0 10px 10px;
 		margin-left: 0;
-
-		min-height: 54px;
 
 		position: absolute;
 		z-index: 90;

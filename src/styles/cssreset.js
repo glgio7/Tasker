@@ -10,7 +10,6 @@ export const GlobalCSS = createGlobalStyle`
     text-decoration: none;
     list-style: none;
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
 }
 
 html, body{

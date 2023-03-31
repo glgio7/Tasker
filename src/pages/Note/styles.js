@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Notepad = styled.section`
 	position: relative;
 
-	min-height: 80vh;
+	height: 80vh;
 	width: 100%;
 
 	border-radius: 10px;
@@ -96,7 +96,7 @@ export const Notepad = styled.section`
 
 	@media screen and (max-width: 900px) {
 		width: 95%;
-		min-height: 60vh;
+		overflow-y: auto;
 
 		margin-top: calc(54px + 2rem);
 		margin-left: 0;
