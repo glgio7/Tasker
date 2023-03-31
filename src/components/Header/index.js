@@ -21,7 +21,7 @@ export default function Header({ setColor }) {
 					);
 				}}
 			>
-				<option value="">Theme</option>
+				<option value="">Tema</option>
 				<option value="default">Original</option>
 				<option value="darkModeOrange">Dark Mode Orange</option>
 				<option value="darkModeBlue">Dark Mode Blue</option>

@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<>
 			<StyledFooter>
-				<p>Developed by Dev Giovane Lucas / @glgio7 on GitHub </p>
+				<p>Desenvolvido por Dev Giovane Azevedo / @glgio7 on GitHub </p>
 			</StyledFooter>
 		</>
 	);

@@ -33,10 +33,10 @@ const Note = () => {
 		<>
 			<Toolbar toggleWeather={toggleWeather} clearList={clearList} />
 			<Notepad onLoad={() => window.scrollTo(0, 0)}>
-				<h2>Notepad</h2>
+				<h2>Notas</h2>
 				<h4>
-					<span>{remainingDays}</span> {remainingDays === 1 ? "day" : "days"}{" "}
-					left for next month.
+					<span>{remainingDays}</span> {remainingDays === 1 ? "dia" : "dias"}{" "}
+					para o próximo mês.
 				</h4>
 				<CreateTask>
 					<input
@@ -50,11 +50,11 @@ const Note = () => {
 						onChange={(e) => setDeadline(e.target.value)}
 					>
 						<option value="">Deadline</option>
-						<option>1 day</option>
-						<option>2 days</option>
-						<option>3 days</option>
-						<option>4 days</option>
-						<option>5 days</option>
+						<option>1 dia</option>
+						<option>2 dias</option>
+						<option>3 dias</option>
+						<option>4 dias</option>
+						<option>5 dias</option>
 					</select>
 					<button onClick={addTask}>Add</button>
 
@@ -63,8 +63,8 @@ const Note = () => {
 						value={category}
 						onChange={(e) => setCategory(e.target.value)}
 					>
-						<option value={"All"}>Set Category</option>
-						<option value={"All"}>None</option>
+						<option value={"All"}>Definir categoria</option>
+						<option value={"All"}>Geral</option>
 						<option>Daily</option>
 						<option>Leisure</option>
 						<option>Personal</option>
@@ -97,7 +97,7 @@ const Note = () => {
 					className={weather ? "close-iframe active" : "close-iframe"}
 					onClick={toggleWeather}
 				>
-					Voltar para Notepad
+					Voltar para Notas
 				</button>
 			</Notepad>
 		</>

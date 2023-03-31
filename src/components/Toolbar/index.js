@@ -47,13 +47,13 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 					<span>Menu</span>
 				</button>
 				<button className="options-button" onClick={() => setToolsOpen(true)}>
-					Tools
+					Ferramentas
 				</button>
 				<button
 					className="options-button"
 					onClick={() => setCategoriesOpen(true)}
 				>
-					Categories
+					Categorias
 				</button>
 
 				<div
