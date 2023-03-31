@@ -55,7 +55,7 @@ const ListProvider = (props) => {
 		}
 	}, [list, currentCategory]);
 
-	// Get list from local storage if it has a saved list
+	// Get list from local storage if there's a saved list
 
 	useEffect(() => {
 		const savedList = JSON.parse(localStorage.getItem("savedTasks"));

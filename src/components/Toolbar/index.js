@@ -1,5 +1,12 @@
 import { IoMenu, IoPartlySunnyOutline } from "react-icons/io5";
-import { VscClearAll, VscSymbolOperator } from "react-icons/vsc";
+import {
+	VscAdd,
+	VscClearAll,
+	VscClose,
+	VscNewFile,
+	VscNewFolder,
+	VscSymbolOperator,
+} from "react-icons/vsc";
 import { useContext, useState } from "react";
 import { ToolbarContainer } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
@@ -20,6 +27,9 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 
 	const { categories, setCategories, filterCategory } = useContext(ListContext);
 
+	const saveCategories = (item, value) =>
+		localStorage.setItem(item, JSON.stringify(value));
+
 	const closeOptions = () => {
 		setToolsOpen(false);
 		setCategoriesOpen(false);
@@ -36,10 +46,13 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 	const addCategory = () => {
 		const newCategory = window.prompt("Insira o nome da categoria");
 		setCategories([...categories, newCategory]);
-		localStorage.setItem(
-			"categories",
-			JSON.stringify([...categories, newCategory])
-		);
+		saveCategories("categories", [...categories, newCategory]);
+	};
+
+	const removeCategory = (value) => {
+		const newCategories = categories.filter((item) => item !== value);
+		setCategories(newCategories);
+		saveCategories("categories", newCategories);
 	};
 
 	return (
@@ -72,7 +85,8 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 					</button>
 
 					<button className="options-button" onClick={addCategory}>
-						Nova categoria
+						<VscNewFolder className="options-button__icon" />
+						<span>Nova categoria</span>
 					</button>
 
 					{/* // Tools */}
@@ -115,16 +129,22 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 
 					{categoriesOpen &&
 						categories.map((item) => (
-							<button
-								key={item}
-								className="options-button categories"
-								onClick={() => {
-									setIsOpen(false);
-									closeOptions();
-									filterCategory(item);
-								}}
-							>
-								{item}
+							<button key={item} className="options-button categories">
+								<span
+									onClick={() => {
+										setIsOpen(false);
+										closeOptions();
+										filterCategory(item);
+									}}
+								>
+									{item}
+								</span>
+								<VscClose
+									className="options-button__icon"
+									onClick={() => {
+										removeCategory(item);
+									}}
+								/>
 							</button>
 						))}
 				</div>

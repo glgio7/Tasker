@@ -51,9 +51,14 @@ export const ToolbarContainer = styled.div`
 					: "rgba(0, 0, 0, 0.2)"};
 		border-radius: 10px;
 
-		padding: 1rem 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
 		margin-block: 0.5rem;
 
+		min-height: 48px;
+		height: auto;
 		width: 90%;
 
 		font-weight: bold;
@@ -64,6 +69,10 @@ export const ToolbarContainer = styled.div`
 		&:hover {
 			background-color: ${({ theme }) => theme.buttonTextColor};
 			color: ${({ theme }) => theme.buttonColor};
+
+			span {
+				color: ${({ theme }) => theme.buttonColor};
+			}
 		}
 
 		&:first-child {
@@ -72,12 +81,29 @@ export const ToolbarContainer = styled.div`
 	}
 
 	.options-button.categories {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-inline: 3px;
+
 		background-color: ${({ theme }) => theme.buttonColor};
 
 		&:hover {
 			background-color: ${({ theme }) => theme.buttonTextColor};
 			color: ${({ theme }) => theme.buttonColor};
 		}
+	}
+	.options-button.categories span {
+		display: inline-flex;
+		align-items: center;
+
+		height: 100%;
+		width: 80%;
+	}
+
+	.options-button__icon {
+		font-size: 1.5rem;
+		font-weight: bold;
 	}
 
 	.wrapper {
@@ -93,7 +119,6 @@ export const ToolbarContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
 
 		opacity: 0;
 
