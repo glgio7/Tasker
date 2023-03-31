@@ -155,24 +155,27 @@ export const ToolbarContainer = styled.div`
 
 	@media screen and (max-width: 900px) {
 		width: 90%;
+		height: ${({ open }) => (open ? "100%" : "36px")};
+
 		border-left: 2px outset ${({ theme }) => theme.primaryColor};
 		border-top: none;
 		border-radius: 0 0 10px 10px;
+
+		margin-bottom: 0.5rem;
 		margin-left: 0;
 
 		position: absolute;
-		z-index: 90;
 		top: 0;
 
-		height: ${({ open }) => (open ? "100%" : "54px")};
+		z-index: 90;
+
 		flex-wrap: wrap;
 		justify-content: flex-start;
-		margin-bottom: 0.5rem;
 
 		button {
 			width: 100%;
 			height: auto;
-			margin-block: 2 rem;
+			margin-block: 2rem;
 			cursor: pointer;
 		}
 
@@ -180,7 +183,13 @@ export const ToolbarContainer = styled.div`
 			margin-block: 0rem;
 		}
 
+		.menu__action-icon {
+			width: 30px;
+			height: 30px;
+		}
+
 		.wrapper {
+			height: auto;
 			justify-content: flex-start;
 		}
 

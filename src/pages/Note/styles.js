@@ -24,16 +24,20 @@ export const Notepad = styled.section`
 
 	h2,
 	h4 {
+		background-color: ${({ theme }) => theme.backgroundColor};
 		color: ${({ theme }) => theme.textColor};
+
 		width: 100%;
 	}
 
 	h2.list-title {
-		margin-block: 0.5rem;
-		padding-block: 0.5rem;
-		border-radius: 10px;
 		background-color: ${({ theme }) => theme.containerColor};
 		color: ${({ theme }) => theme.primaryColor};
+
+		margin-block: 0.5rem;
+		padding-block: 0.5rem;
+
+		border-radius: 10px;
 	}
 
 	span:first-child {
@@ -98,9 +102,8 @@ export const Notepad = styled.section`
 
 	@media screen and (max-width: 900px) {
 		width: 95%;
-		overflow-y: auto;
 
-		margin-top: calc(54px + 2rem);
+		margin-top: 36px;
 		margin-left: 0;
 	}
 `;
@@ -156,6 +159,7 @@ export const CreateTask = styled.div`
 
 	.categories-selector {
 		appearance: none;
+
 		width: 100%;
 		height: 40px;
 

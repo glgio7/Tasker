@@ -38,7 +38,7 @@ const Container = styled.main`
 	@media screen and (max-width: 900px) {
 		flex-direction: column;
 		align-items: center;
-		padding: 2rem 2rem;
+		padding: 2rem 1rem;
 	}
 `;
 
