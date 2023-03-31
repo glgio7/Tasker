@@ -1,9 +1,7 @@
 import { IoMenu, IoPartlySunnyOutline } from "react-icons/io5";
 import {
-	VscAdd,
 	VscClearAll,
 	VscClose,
-	VscNewFile,
 	VscNewFolder,
 	VscSymbolOperator,
 } from "react-icons/vsc";
@@ -20,15 +18,15 @@ const lastDay = JSON.stringify(new Date(year, month, 0)).slice(9, 11);
 
 export const remainingDays = parseInt(lastDay) - parseInt(day) + 1;
 
-export const Toolbar = ({ toggleWeather, clearList }) => {
+const saveCategories = (item, value) =>
+	localStorage.setItem(item, JSON.stringify(value));
+
+export const Toolbar = ({ toggleWeather, toggleCalc, clearList }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [toolsOpen, setToolsOpen] = useState(false);
 	const [categoriesOpen, setCategoriesOpen] = useState(false);
 
 	const { categories, setCategories, filterCategory } = useContext(ListContext);
-
-	const saveCategories = (item, value) =>
-		localStorage.setItem(item, JSON.stringify(value));
 
 	const closeOptions = () => {
 		setToolsOpen(false);
@@ -84,10 +82,12 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 						Voltar
 					</button>
 
-					<button className="options-button" onClick={addCategory}>
-						<VscNewFolder className="options-button__icon" />
-						<span>Nova categoria</span>
-					</button>
+					{categoriesOpen && (
+						<button className="options-button" onClick={addCategory}>
+							<VscNewFolder className="options-button__icon" />
+							<span>Nova categoria</span>
+						</button>
+					)}
 
 					{/* // Tools */}
 					{toolsOpen && (
@@ -105,6 +105,7 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 
 							<button
 								onClick={() => {
+									toggleCalc();
 									setIsOpen(false);
 									closeOptions();
 								}}

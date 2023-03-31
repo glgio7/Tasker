@@ -24,15 +24,27 @@ const Note = () => {
 	} = useContext(ListContext);
 
 	const [weather, setWeather] = useState(false);
+	const [calc, setCalc] = useState(false);
 
-	const toggleWeather = () => setWeather(!weather);
+	const toggleWeather = () => {
+		setWeather(!weather);
+		setCalc(false);
+	};
+	const toggleCalc = () => {
+		setCalc(!calc);
+		setWeather(false);
+	};
 
 	const submitOnEnter = (props) => (props.keyCode === 13 ? addTask() : "");
 	useEffect(() => {}, [list]);
 
 	return (
 		<>
-			<Toolbar toggleWeather={toggleWeather} clearList={clearList} />
+			<Toolbar
+				toggleWeather={toggleWeather}
+				toggleCalc={toggleCalc}
+				clearList={clearList}
+			/>
 			<Notepad onLoad={() => window.scrollTo(0, 0)}>
 				<h2>Notas</h2>
 				<h4>
@@ -88,7 +100,7 @@ const Note = () => {
 						))}
 				</ul>
 
-				{/* ////////////////// Iframe container */}
+				{/* Weather iframe */}
 
 				<iframe
 					src="https://climaki.vercel.app"
@@ -98,6 +110,19 @@ const Note = () => {
 				<button
 					className={weather ? "close-iframe active" : "close-iframe"}
 					onClick={toggleWeather}
+				>
+					Voltar para Notas
+				</button>
+
+				{/* Calculator iframe */}
+				<iframe
+					src="https://dio-calculator-six.vercel.app/"
+					className={calc ? "active" : ""}
+					title="calculator"
+				></iframe>
+				<button
+					className={calc ? "close-iframe active" : "close-iframe"}
+					onClick={toggleCalc}
 				>
 					Voltar para Notas
 				</button>
