@@ -17,8 +17,7 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 	const [toolsOpen, setToolsOpen] = useState(false);
 	const [categoriesOpen, setCategoriesOpen] = useState(false);
 
-	const { list, setCurrentCategory, setFilteredList, filterCategory } =
-		useContext(ListContext);
+	const { filterCategory } = useContext(ListContext);
 
 	const closeOptions = () => {
 		setToolsOpen(false);

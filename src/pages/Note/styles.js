@@ -6,6 +6,8 @@ export const Notepad = styled.section`
 	height: 80vh;
 	width: 100%;
 
+	overflow-y: auto;
+
 	border-radius: 10px;
 	border: 2px ${({ theme }) => theme.primaryColor} solid;
 

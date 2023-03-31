@@ -44,6 +44,12 @@ export const ToolbarContainer = styled.div`
 	///////// Options /////////
 
 	.options-button {
+		/* rgba(0, 0, 0, 0.2) */
+		border: 1px solid
+			${({ theme }) =>
+				theme.containerColor !== "#fff"
+					? "rgba(255, 255, 255, 0.2)"
+					: "rgba(0, 0, 0, 0.2)"};
 		border-radius: 10px;
 
 		padding: 1rem 0;
