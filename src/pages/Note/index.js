@@ -20,6 +20,7 @@ const Note = () => {
 		setCategory,
 		filteredList,
 		currentCategory,
+		categories,
 	} = useContext(ListContext);
 
 	const [weather, setWeather] = useState(false);
@@ -49,7 +50,7 @@ const Note = () => {
 						value={deadline}
 						onChange={(e) => setDeadline(e.target.value)}
 					>
-						<option value="">Deadline</option>
+						<option value="">Prazo</option>
 						<option>1 dia</option>
 						<option>2 dias</option>
 						<option>3 dias</option>
@@ -63,13 +64,14 @@ const Note = () => {
 						value={category}
 						onChange={(e) => setCategory(e.target.value)}
 					>
-						<option value={"All"}>Definir categoria</option>
-						<option value={"All"}>Geral</option>
-						<option>Daily</option>
-						<option>Leisure</option>
-						<option>Personal</option>
-						<option>Professional</option>
-						<option>Financial</option>
+						<option value={"Geral"}>Definir categoria</option>
+						{categories.map((item) => {
+							return (
+								<option key={item} value={item}>
+									{item}
+								</option>
+							);
+						})}
 					</select>
 				</CreateTask>
 

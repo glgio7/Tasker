@@ -10,19 +10,27 @@ const ListProvider = (props) => {
 
 	const [deadline, setDeadline] = useState();
 
-	const [category, setCategory] = useState("All");
+	const [category, setCategory] = useState("Geral");
+
+	// User custom categories
+	const [categories, setCategories] = useState([
+		"Geral",
+		"Diário",
+		"Pessoal",
+		"Profissional",
+	]);
 
 	// States to filter list
 
 	const [filteredList, setFilteredList] = useState(list);
 
-	const [currentCategory, setCurrentCategory] = useState("All");
+	const [currentCategory, setCurrentCategory] = useState("Geral");
 
 	// Define the current category based on value received by the button which calls the function
 
 	const filterCategory = useCallback(
 		(value) => {
-			if (value === "All") {
+			if (value === "Geral") {
 				setFilteredList(list);
 			} else {
 				const filtered = list.filter((item) => item.category === value);
@@ -39,7 +47,7 @@ const ListProvider = (props) => {
 	// Update the filtered list whenever the full list is modified
 
 	useEffect(() => {
-		if (currentCategory !== "All") {
+		if (currentCategory !== "Geral") {
 			const filtered = list.filter((item) => item.category === currentCategory);
 			setFilteredList(filtered);
 		} else {
@@ -116,6 +124,8 @@ const ListProvider = (props) => {
 		filteredList,
 		setFilteredList,
 		filterCategory,
+		categories,
+		setCategories,
 	};
 
 	return (

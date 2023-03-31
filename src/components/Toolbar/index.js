@@ -3,6 +3,7 @@ import { VscClearAll, VscSymbolOperator } from "react-icons/vsc";
 import { useContext, useState } from "react";
 import { ToolbarContainer } from "./styles";
 import { ListContext } from "../../contexts/ListContext";
+import { useEffect } from "react";
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
@@ -17,21 +18,29 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 	const [toolsOpen, setToolsOpen] = useState(false);
 	const [categoriesOpen, setCategoriesOpen] = useState(false);
 
-	const { filterCategory } = useContext(ListContext);
+	const { categories, setCategories, filterCategory } = useContext(ListContext);
 
 	const closeOptions = () => {
 		setToolsOpen(false);
 		setCategoriesOpen(false);
 	};
 
-	const categoriesValues = [
-		"All",
-		"Daily",
-		"Leisure",
-		"Personal",
-		"Professional",
-		"Financial",
-	];
+	useEffect(() => {
+		const savedCategories = JSON.parse(localStorage.getItem("categories"));
+
+		if (savedCategories) {
+			setCategories(savedCategories);
+		}
+	}, [setCategories]);
+
+	const addCategory = () => {
+		const newCategory = window.prompt("Insira o nome da categoria");
+		setCategories([...categories, newCategory]);
+		localStorage.setItem(
+			"categories",
+			JSON.stringify([...categories, newCategory])
+		);
+	};
 
 	return (
 		<>
@@ -60,6 +69,10 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 				>
 					<button className="options-button" onClick={closeOptions}>
 						Voltar
+					</button>
+
+					<button className="options-button" onClick={addCategory}>
+						Nova categoria
 					</button>
 
 					{/* // Tools */}
@@ -101,7 +114,7 @@ export const Toolbar = ({ toggleWeather, clearList }) => {
 					{/* // Categories */}
 
 					{categoriesOpen &&
-						categoriesValues.map((item) => (
+						categories.map((item) => (
 							<button
 								key={item}
 								className="options-button categories"

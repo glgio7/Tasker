@@ -44,7 +44,6 @@ export const ToolbarContainer = styled.div`
 	///////// Options /////////
 
 	.options-button {
-		/* rgba(0, 0, 0, 0.2) */
 		border: 1px solid
 			${({ theme }) =>
 				theme.containerColor !== "#fff"
@@ -59,16 +58,16 @@ export const ToolbarContainer = styled.div`
 
 		font-weight: bold;
 
-		&:first-child {
-			margin-bottom: 4rem;
-		}
-
 		background-color: ${({ theme }) => theme.primaryColor};
 		color: ${({ theme }) => theme.buttonTextColor};
 
 		&:hover {
 			background-color: ${({ theme }) => theme.buttonTextColor};
 			color: ${({ theme }) => theme.buttonColor};
+		}
+
+		&:first-child {
+			margin-block: 2rem;
 		}
 	}
 
@@ -85,9 +84,10 @@ export const ToolbarContainer = styled.div`
 		background-color: ${({ theme }) => theme.containerColor};
 
 		position: absolute;
-		bottom: 0;
+		top: 0;
 
 		height: 100%;
+		overflow-y: auto;
 		width: 100%;
 
 		display: flex;
