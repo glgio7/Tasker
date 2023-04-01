@@ -5,7 +5,7 @@ export const ToolbarContainer = styled.div`
 	border: 2px ${({ theme }) => theme.primaryColor} outset;
 	border-left: none;
 
-	width: ${({ open }) => (open ? "20%" : "3rem")};
+	width: ${({ open }) => (open ? "25%" : "3rem")};
 
 	margin-left: -2rem;
 	height: 80vh;
@@ -84,7 +84,7 @@ export const ToolbarContainer = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding-inline: 3px;
+		padding-inline: 16px;
 
 		background-color: ${({ theme }) => theme.buttonColor};
 
@@ -96,9 +96,10 @@ export const ToolbarContainer = styled.div`
 	.options-button.categories span {
 		display: inline-flex;
 		align-items: center;
+		justify-content: flex-start;
 
 		height: 100%;
-		width: 80%;
+		width: 100%;
 	}
 
 	.options-button__icon {
