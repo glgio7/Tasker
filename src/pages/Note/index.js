@@ -110,19 +110,19 @@ const Note = () => {
 				</ul>
 
 				{/* Weather iframe */}
-				<ToolViewer
-					tool={weather}
-					title={"Clima"}
-					src={"https://climaki.vercel.app"}
-					onClick={closeToolViewer}
-				/>
-				<ToolViewer
-					tool={calc}
-					title={"Calculadora"}
-					src={"https://dio-calculator-six.vercel.app/"}
-					onClick={closeToolViewer}
-				/>
 			</Notepad>
+			<ToolViewer
+				tool={weather}
+				title={"Clima"}
+				src={"https://climaki.vercel.app"}
+				onClick={closeToolViewer}
+			/>
+			<ToolViewer
+				tool={calc}
+				title={"Calculadora"}
+				src={"https://dio-calculator-six.vercel.app/"}
+				onClick={closeToolViewer}
+			/>
 		</>
 	);
 };

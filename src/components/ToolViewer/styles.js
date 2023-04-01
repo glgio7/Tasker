@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const ToolContainer = styled.div`
-	opacity: 1;
+	opacity: ${({ tool }) => (tool ? "1" : "0")};
 
-	pointer-events: all;
+	pointer-events: ${({ tool }) => (tool ? "all" : "none")};
 
 	z-index: 9;
 
 	position: absolute;
 	top: 0;
+	left: 0;
 
 	width: 100%;
 	height: 100%;
@@ -18,7 +19,7 @@ export const ToolContainer = styled.div`
 	iframe {
 		position: absolute;
 		top: 0;
-		left: 0;
+		bottom: 0;
 
 		width: 100%;
 		height: 100%;
@@ -29,7 +30,7 @@ export const ToolContainer = styled.div`
 	button {
 		cursor: pointer;
 
-		position: absolute;
+		position: fixed;
 		left: 0;
 		bottom: 0;
 
@@ -44,5 +45,11 @@ export const ToolContainer = styled.div`
 		font-weight: bold;
 
 		transition: all 300ms;
+	}
+
+	@media screen and (max-width: 900px) {
+		button {
+			height: 4rem;
+		}
 	}
 `;
