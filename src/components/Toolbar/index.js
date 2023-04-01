@@ -140,12 +140,14 @@ export const Toolbar = ({ toggleWeather, toggleCalc, clearList }) => {
 								>
 									{item}
 								</span>
-								<VscClose
-									className="options-button__icon"
-									onClick={() => {
-										removeCategory(item);
-									}}
-								/>
+								{item !== "Geral" && (
+									<VscClose
+										className="options-button__icon"
+										onClick={() => {
+											removeCategory(item);
+										}}
+									/>
+								)}
 							</button>
 						))}
 				</div>
