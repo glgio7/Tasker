@@ -44,54 +44,6 @@ export const Notepad = styled.section`
 		color: ${({ theme }) => theme.primaryColor};
 	}
 
-	iframe {
-		opacity: 0;
-
-		pointer-events: none;
-
-		position: absolute;
-		top: 0;
-
-		width: 100%;
-		height: 100%;
-
-		transition: all 300ms;
-	}
-	iframe.active {
-		z-index: 9;
-
-		opacity: 1;
-
-		pointer-events: all;
-	}
-
-	.close-iframe {
-		opacity: 0;
-
-		cursor: pointer;
-		pointer-events: none;
-
-		position: absolute;
-		bottom: 0;
-
-		z-index: 10;
-
-		width: 100%;
-		height: 3rem;
-
-		background-color: ${({ theme }) => theme.primaryColor};
-		color: ${({ theme }) => theme.buttonTextColor};
-
-		font-weight: bold;
-
-		transition: all 300ms;
-	}
-
-	.close-iframe.active {
-		opacity: 1;
-		pointer-events: all;
-	}
-
 	ul {
 		display: flex;
 		flex-direction: column-reverse;

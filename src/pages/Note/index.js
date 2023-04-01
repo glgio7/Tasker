@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Notepad, CreateTask } from "./styles";
 import TaskItem from "../../components/TaskItem";
 import { remainingDays, Toolbar } from "../../components/Toolbar";
+import ToolViewer from "../../components/ToolViewer";
 
 const Note = () => {
 	const {
@@ -35,6 +36,11 @@ const Note = () => {
 		setWeather(false);
 	};
 
+	const closeToolViewer = () => {
+		setCalc(false);
+		setWeather(false);
+	};
+
 	const submitOnEnter = (props) => (props.keyCode === 13 ? addTask() : "");
 	useEffect(() => {}, [list]);
 
@@ -51,6 +57,8 @@ const Note = () => {
 					<span>{remainingDays}</span> {remainingDays === 1 ? "dia" : "dias"}{" "}
 					para o próximo mês.
 				</h4>
+
+				{/* Create Task container */}
 				<CreateTask>
 					<input
 						type="text"
@@ -87,6 +95,7 @@ const Note = () => {
 					</select>
 				</CreateTask>
 
+				{/* List of tasks container */}
 				<h2 className="list-title">{currentCategory}</h2>
 				<ul>
 					{filteredList &&
@@ -101,31 +110,18 @@ const Note = () => {
 				</ul>
 
 				{/* Weather iframe */}
-
-				<iframe
-					src="https://climaki.vercel.app"
-					className={weather ? "active" : ""}
-					title="weather"
-				></iframe>
-				<button
-					className={weather ? "close-iframe active" : "close-iframe"}
-					onClick={toggleWeather}
-				>
-					Voltar para Notas
-				</button>
-
-				{/* Calculator iframe */}
-				<iframe
-					src="https://dio-calculator-six.vercel.app/"
-					className={calc ? "active" : ""}
-					title="calculator"
-				></iframe>
-				<button
-					className={calc ? "close-iframe active" : "close-iframe"}
-					onClick={toggleCalc}
-				>
-					Voltar para Notas
-				</button>
+				<ToolViewer
+					tool={weather}
+					title={"Clima"}
+					src={"https://climaki.vercel.app"}
+					onClick={closeToolViewer}
+				/>
+				<ToolViewer
+					tool={calc}
+					title={"Calculadora"}
+					src={"https://dio-calculator-six.vercel.app/"}
+					onClick={closeToolViewer}
+				/>
 			</Notepad>
 		</>
 	);
