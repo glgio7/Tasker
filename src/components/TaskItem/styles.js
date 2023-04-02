@@ -66,7 +66,8 @@ export const TaskContainer = styled.li`
 	}
 
 	.task-info__description {
-		text-align: center;
+		text-align: left;
+		width: 100%;
 
 		opacity: 0;
 		pointer-events: none;
@@ -138,6 +139,10 @@ export const TaskContainer = styled.li`
 		span,
 		.edit-box {
 			width: 100%;
+		}
+
+		.task-description p {
+			width: calc(100% - 64px);
 		}
 
 		.edit-box {
