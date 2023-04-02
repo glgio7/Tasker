@@ -56,6 +56,8 @@ export const StyledHeader = styled.header`
 		border-radius: 9px;
 
 		font-weight: bold;
+
+		outline: none;
 	}
 
 	option {

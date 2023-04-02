@@ -6,10 +6,11 @@ export const TaskContainer = styled.li`
 	align-items: center;
 
 	width: 100%;
+	padding: 1rem;
 	margin: 0.5rem 0;
 
 	.task-description,
-	span {
+	.task-deadline {
 		word-break: break-word;
 
 		border-radius: 6px;
@@ -22,73 +23,68 @@ export const TaskContainer = styled.li`
 		text-align: center;
 
 		background-color: ${({ theme }) => theme.containerColor};
+		color: ${({ theme }) => theme.textColor};
+
 		opacity: ${({ done }) => (done ? "0.5" : "1")};
 
 		display: inline-flex;
-		justify-content: center;
 		align-items: center;
-		color: ${({ theme }) => theme.textColor};
-	}
-
-	.task-description {
+		justify-content: center;
 		position: relative;
 	}
 
-	.task-info {
-		background-color: transparent;
+	.task-description {
+		justify-content: space-between;
+	}
 
+	.task-description p {
+		width: calc(100% - (24px + 0.25rem));
+		text-align: left;
+	}
+
+	.task-description span {
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 0;
-		bottom: 0;
-
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		padding: 0 8px;
 
 		border-radius: 6px;
 
-		transition: all 500ms;
-	}
-
-	.task-info.active {
-		background-color: ${({ theme }) => theme.backgroundColor};
-	}
-
-	.task-info__icon {
-		cursor: pointer;
-
-		width: 24px;
-		height: 24px;
-	}
-
-	.task-info__description {
-		text-align: left;
-		width: 100%;
+		height: 100%;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 
 		opacity: 0;
 		pointer-events: none;
 
-		width: 100%;
+		background-color: ${({ theme }) => theme.containerColor};
 
-		transition: all 500ms;
+		transition: all 250ms;
 	}
-	.task-info__description.active {
+
+	.task-description span.active {
 		opacity: 1;
 		pointer-events: all;
 	}
 
-	span {
+	.task-description__icon {
+		cursor: pointer;
+
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		right: 0.25rem;
+	}
+
+	.task-deadline {
 		font-weight: bold;
 		text-align: center;
 		font-size: 1rem;
+
 		width: 15%;
 	}
 
-	.edit-box {
+	.task-manager {
 		width: 15%;
 		height: 40px;
 
@@ -131,27 +127,27 @@ export const TaskContainer = styled.li`
 		flex-wrap: wrap;
 		flex-direction: column;
 
-		span {
-			font-size: 0.8rem;
-		}
-
 		.task-description,
-		span,
-		.edit-box {
+		.task-deadline,
+		.task-manager {
 			width: 100%;
 		}
 
-		.task-description p {
-			width: calc(100% - 64px);
+		.task-description {
+			padding-inline: 0.5rem;
 		}
 
-		.edit-box {
+		.task-deadline {
+			font-size: 0.8rem;
+		}
+
+		.task-manager {
 			border-radius: 6px 6px 0 0;
 
 			margin-top: 0.5rem;
 		}
 
-		span {
+		.task-deadline {
 			order: 1;
 
 			border-radius: 0 0 6px 6px;

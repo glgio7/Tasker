@@ -37,6 +37,8 @@ export const Notepad = styled.section`
 		margin-block: 0.5rem;
 		padding-block: 0.5rem;
 
+		width: calc(100% - 2rem);
+
 		border-radius: 10px;
 	}
 
@@ -71,8 +73,6 @@ export const CreateTask = styled.div`
 	margin: 1rem 0;
 
 	border-radius: 5px;
-
-	background-color: ${({ theme }) => theme.containerColor};
 
 	input {
 		width: 65%;
