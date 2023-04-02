@@ -8,7 +8,7 @@ export const TaskContainer = styled.li`
 	width: 100%;
 	margin: 0.5rem 0;
 
-	p,
+	.task-description,
 	span {
 		word-break: break-word;
 
@@ -28,6 +28,56 @@ export const TaskContainer = styled.li`
 		justify-content: center;
 		align-items: center;
 		color: ${({ theme }) => theme.textColor};
+	}
+
+	.task-description {
+		position: relative;
+	}
+
+	.task-info {
+		background-color: transparent;
+
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 0 8px;
+
+		border-radius: 6px;
+
+		transition: all 500ms;
+	}
+
+	.task-info.active {
+		background-color: ${({ theme }) => theme.backgroundColor};
+	}
+
+	.task-info__icon {
+		cursor: pointer;
+
+		width: 24px;
+		height: 24px;
+	}
+
+	.task-info__description {
+		text-align: center;
+
+		opacity: 0;
+		pointer-events: none;
+
+		width: 100%;
+
+		transition: all 500ms;
+	}
+	.task-info__description.active {
+		opacity: 1;
+		pointer-events: all;
 	}
 
 	span {
@@ -84,7 +134,7 @@ export const TaskContainer = styled.li`
 			font-size: 0.8rem;
 		}
 
-		p,
+		.task-description,
 		span,
 		.edit-box {
 			width: 100%;
