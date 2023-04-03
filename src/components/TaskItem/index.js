@@ -11,7 +11,18 @@ const TaskItem = ({ task, setDone, remove }) => {
 		<TaskContainer done={task.checked}>
 			<div className="task-description">
 				<p>{task.task}</p>
-				<span className={taskInfo ? "active" : ""}>{task.category}</span>
+				<div
+					className={
+						taskInfo
+							? "task-description__info active"
+							: "task-description__info"
+					}
+				>
+					<h6>Categoria:</h6>
+					<span>{task.category} </span>
+					<h6>Criado em:</h6>
+					<span>{task.createdAt || "Not registered"}</span>
+				</div>
 				<MdInfo className="task-description__icon" onClick={handleTaskInfo} />
 			</div>
 

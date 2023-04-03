@@ -15,7 +15,7 @@ export const TaskContainer = styled.li`
 
 		border-radius: 6px;
 
-		padding: 0.25rem;
+		padding: 0.25rem 0.5rem;
 
 		min-height: 40px;
 		width: 65%;
@@ -42,7 +42,7 @@ export const TaskContainer = styled.li`
 		text-align: left;
 	}
 
-	.task-description span {
+	.task-description__info {
 		position: absolute;
 		left: 0;
 		right: 0;
@@ -62,7 +62,18 @@ export const TaskContainer = styled.li`
 		transition: all 250ms;
 	}
 
-	.task-description span.active {
+	.task-description h6 {
+		color: ${({ theme }) => theme.primaryColor};
+		font-size: 1rem;
+	}
+
+	.task-description__info span {
+		color: ${({ theme }) => theme.textColor};
+		margin-right: 18px;
+		margin-left: 6px;
+	}
+
+	.task-description__info.active {
 		opacity: 1;
 		pointer-events: all;
 	}
@@ -139,6 +150,18 @@ export const TaskContainer = styled.li`
 
 		.task-deadline {
 			font-size: 0.8rem;
+		}
+
+		.task-description__info {
+			height: fit-content;
+			padding-block: 1rem;
+			flex-direction: column;
+		}
+
+		.task-description__info span {
+			margin-block: 3px;
+			margin-right: 0;
+			margin-left: 0;
 		}
 
 		.task-manager {

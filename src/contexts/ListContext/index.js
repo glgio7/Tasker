@@ -12,6 +12,13 @@ const ListProvider = (props) => {
 
 	const [category, setCategory] = useState("Geral");
 
+	const date = new Date();
+	const day = date.getDate();
+	const month = date.getMonth() + 1;
+	const year = date.getFullYear() % 100;
+
+	const currentDate = `${day}/${month}/${year}`;
+
 	// User custom categories
 	const [categories, setCategories] = useState([
 		"Geral",
@@ -79,6 +86,7 @@ const ListProvider = (props) => {
 			checked: false,
 			deadline: deadline,
 			category: category,
+			createdAt: currentDate,
 		};
 		setList([...list, newTask]);
 		setTask("");
