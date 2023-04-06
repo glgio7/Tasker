@@ -80,6 +80,10 @@ export const ToolbarContainer = styled.div`
 		}
 	}
 
+	.options-button span {
+		margin-inline: 0.25rem;
+	}
+
 	.options-button.categories {
 		display: flex;
 		align-items: center;
@@ -150,8 +154,8 @@ export const ToolbarContainer = styled.div`
 	}
 
 	.action-icon {
-		width: 42px;
-		height: 42px;
+		width: 30px;
+		height: 30px;
 	}
 
 	@media screen and (max-width: 900px) {

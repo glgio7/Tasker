@@ -82,13 +82,6 @@ export const Toolbar = ({ toggleWeather, toggleCalc, clearList }) => {
 						Voltar
 					</button>
 
-					{categoriesOpen && (
-						<button className="options-button" onClick={addCategory}>
-							<VscNewFolder className="options-button__icon" />
-							<span>Nova categoria</span>
-						</button>
-					)}
-
 					{/* // Tools */}
 					{toolsOpen && (
 						<>
@@ -127,6 +120,13 @@ export const Toolbar = ({ toggleWeather, toggleCalc, clearList }) => {
 					)}
 
 					{/* // Categories */}
+
+					{categoriesOpen && (
+						<button className="options-button" onClick={addCategory}>
+							<VscNewFolder className="options-button__icon" />
+							<span>Nova categoria</span>
+						</button>
+					)}
 
 					{categoriesOpen &&
 						categories.map((item) => (
