@@ -80,7 +80,7 @@ export const TaskContainer = styled.li`
 		pointer-events: all;
 	}
 
-	.task__icon {
+	.task-info__icon {
 		cursor: pointer;
 
 		width: 24px;
@@ -160,7 +160,6 @@ export const TaskContainer = styled.li`
 			padding-block: 1rem;
 			flex-direction: column;
 		}
-
 		.task-info span {
 			margin-block: 6px;
 			margin-right: 0;
