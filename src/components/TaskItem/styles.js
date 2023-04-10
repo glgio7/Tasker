@@ -59,6 +59,8 @@ export const TaskContainer = styled.li`
 		opacity: 0;
 		pointer-events: none;
 
+		z-index: 9;
+
 		background-color: ${({ theme }) => theme.containerColor};
 
 		transition: all 250ms;
@@ -87,7 +89,6 @@ export const TaskContainer = styled.li`
 		height: 24px;
 		position: absolute;
 
-		z-index: 50;
 		right: 0.25rem;
 	}
 

@@ -17,6 +17,7 @@ const TaskItem = ({ task, setDone, remove }) => {
 				<h6>Categoria:</h6>
 				<span>{task.category} </span>
 				<h6>Criado em:</h6>
+				<MdInfo className="task-info__icon" onClick={handleTaskInfo} />
 				<span>{task.createdAt || "Not registered"}</span>
 			</div>
 
